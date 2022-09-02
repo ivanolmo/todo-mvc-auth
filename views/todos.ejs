@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="todo">
-        <h1><%= user.userName %>s Todos</h1>
+        <h1><%= user.userName %>'s Todos</h1>
     </div>
     <div class="todoList">
         <ul>
@@ -28,6 +28,7 @@
     <div class="addTodo">
         <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="text" placeholder="Add subtask" name="subTasks">
         <input type="submit">
         </form>
     </div>
