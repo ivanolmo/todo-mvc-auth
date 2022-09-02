@@ -35,7 +35,9 @@ const TodoSchema = new mongoose.Schema(
     },
     tags: {
       // Create todo tags
-      type: [String], // Set type to array of strings
+      type: [{ type: mongoose.Schema.Types.ObjectId,
+              ref: 'Tag'
+            }],
       required: false, // Set required to false
     },
   },
