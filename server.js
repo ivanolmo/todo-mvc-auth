@@ -10,6 +10,7 @@ const logger = require('morgan'); // Import morgan
 const connectDB = require('./config/database'); // Import database
 const mainRoutes = require('./routes/main'); // Import main routes
 const todoRoutes = require('./routes/todos'); // Import todo routes
+const tagRoutes = require('./routes/tags'); // Import tag routes
 
 require('dotenv').config({ path: './config/.env' }); // Import dotenv
 
@@ -50,6 +51,7 @@ app.use(flash()); // Set flash
 
 app.use('/', mainRoutes); // Set main routes
 app.use('/todos', todoRoutes); // Set todo routes
+app.use('/tags', tagRoutes); // Set tag routes
 
 app.listen(process.env.PORT, () => {
   // Listen to port
