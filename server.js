@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); // Import mongoose
 const passport = require('passport'); // Import passport
 const session = require('express-session'); // Import express-session
 const MongoStore = require('connect-mongo')(session); // Import connect-mongo
+
 const flash = require('express-flash'); // Import express-flash
 const logger = require('morgan'); // Import morgan
 const connectDB = require('./config/database'); // Import database
@@ -32,6 +33,14 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }), // Set store to mongo
   })
 );
+
+// moment middleware
+// const moment = require('moment');
+
+// app.use((req, res, next) => {
+//   res.locals.moment = moment;
+//   next();
+// });
 
 // Passport middleware
 app.use(passport.initialize()); // Initialize passport

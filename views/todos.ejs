@@ -10,38 +10,34 @@
 </head>
 
 <body>
-  <div class="todo">
-    <h1><%= user.userName %>s Todos</h1>
-  </div>
-  <div class="todoList">
-    <ul>
-      <% todos.forEach( el => { %>
-      <li class='todoItem' data-id='<%=el._id%>'>
-        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-        <% if (el.todoDetails) { %>
-        <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
-
-        <% } %>
-        <p class="todoDetails"><%= el.todoDetails %> </p>
-        <span class='del'> Delete </span>
-      </li>
-      <% }) %>
-
-    </ul>
-  </div>
-  <div class="userNumber">
-    <h2><%= user.userName %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
-  </div>
-  <div class="addTodo">
-    <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter todo Item" name='todoItem'>
-      <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
-      <button type="submit" class="todoSubmit">Submit</button>
-    </form>
-  </div>
-  <a id="logoutButton" class="button" href="/logout">Logout</a>
-
-  <script src="js/main.js"></script>
+    <div class="todo">
+        <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
+    </div>
+    <div class="todoList">
+        <ul>
+        <% todos.forEach( el => { %>
+            <li class='todoItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+								<span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
+								<span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
+                <span class='del'> Delete </span>
+            </li>
+        <% }) %>   
+        </ul>
+    </div>
+    <div class="userNumber">
+        <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
+    </div>
+    <div class="addTodo" name="addTodoItem">
+        <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+				<input type="datetime-local" name="dueDate">
+        <input type="submit">
+        </form>
+    </div>
+        <a id="logoutButton" class="button" href="/logout">Logout</a>
+    
+    <script src="js/main.js"></script>
 </body>
 
 </html>

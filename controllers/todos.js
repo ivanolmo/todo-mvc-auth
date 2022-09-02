@@ -30,6 +30,7 @@ module.exports = {
         todoDetails: req.body.todoDetails,
         completed: false,
         userId: req.user.id,
+        dueDate: req.body.dueDate,
       }); // Create todo item
       console.log('Todo has been added!'); // Log to console
       res.redirect('/todos'); // Redirect to todos
