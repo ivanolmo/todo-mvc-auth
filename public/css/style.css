@@ -1,10 +1,175 @@
-h1{
-    color: red;
+/* link text cleaning */
+a:link {
+    text-decoration: none;
 }
-.completed{
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+html {
+
+    background-color: black;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-image: url('images/bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+}
+
+.button {
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* landingPage */
+.title {
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.loginButtons,
+#logoutButton {
+    text-decoration: none;
+    background: #1a1a1a69;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* signup page */
+.signupForm {
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: 25% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* loginPage */
+.login {
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 25% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* todoPage */
+.todo {
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.todoList {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1a1a1a69;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.userNumber {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.addTodo {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #1a1a1a69;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.logout {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.completed {
     text-decoration: line-through;
     color: gray;
 }
-.not{
+
+.not {
     text-decoration: underline;
+}
+
+#logoutButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.del {
+    color: red;
 }
