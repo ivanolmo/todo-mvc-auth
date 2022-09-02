@@ -3,7 +3,7 @@ const mongoose = require('mongoose'); // Import mongoose
 const TagSchema = new mongoose.Schema({
   // Create schema
   tag: {
-    // Create todo
+    // Create tag
     type: String, // Set type to string
     required: true, // Set required to true
   },
