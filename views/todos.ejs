@@ -9,13 +9,15 @@
 </head>
 <body>
     <div class="todo">
-        <h1><%= user.userName %>s Todos</h1>
+        <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
     </div>
     <div class="todoList">
         <ul>
         <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+								<span class="createdDate">Created: <%= el.createdAt %> </span>
+								<span class="dueDate">Due: <%= el.dueDate %> </span>
                 <span class='del'> Delete </span>
             </li>
         <% }) %>   
@@ -23,11 +25,12 @@
         </ul>
     </div>
     <div class="userNumber">
-        <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+        <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
     </div>
-    <div class="addTodo">
+    <div class="addTodo" name="addTodoItem">
         <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+				<input type="datetime-local" name="dueDate">
         <input type="submit">
         </form>
     </div>

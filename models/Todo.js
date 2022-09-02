@@ -23,6 +23,9 @@ const TodoSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    dueDate: {
+      type: Date,
+    },
     todoDetails: {
       // Create todo details
       type: String, // Set type to string
