@@ -139,6 +139,23 @@ html {
     text-align: center;
 }
 
+.addTodo form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.addTodo input,
+.addTodo textarea {
+    width: 100%;
+}
+
+.todoSubmit {
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
 .logout {
     color: #fff;
     font-size: 20px;
@@ -172,4 +189,8 @@ html {
 
 .del {
     color: red;
+}
+
+.todoDetails {
+    display: none;
 }
