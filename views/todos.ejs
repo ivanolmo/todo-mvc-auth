@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -18,11 +19,18 @@
       <% todos.forEach( el => { %>
       <li class='todoItem' data-id='<%=el._id%>'>
         <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-        <% if (el.todoDetails) { %>
+        <% if (el.todoDetails || el.tags) { %>
         <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
 
         <% } %>
         <p class="todoDetails"><%= el.todoDetails %> </p>
+        <% if (el.tags?.length) { %>
+          <section class="tags" data-id=<%= el._id %>>
+              <% el.tags.forEach( el => { %>
+              <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
+            <% }) %>
+          </section>
+        <% } %>
         <span class='del'> Delete </span>
       </li>
       <% }) %>
@@ -36,12 +44,14 @@
     <form action="/todos/createTodo" method='POST'>
       <input type="text" placeholder="Enter todo Item" name='todoItem'>
       <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+      <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
       <button type="submit" class="todoSubmit">Submit</button>
     </form>
   </div>
   <a id="logoutButton" class="button" href="/logout">Logout</a>
 
   <script src="js/main.js"></script>
+  <script src="js/tags.js"></script>
 </body>
 
 </html>
