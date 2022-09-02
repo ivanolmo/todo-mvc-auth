@@ -38,6 +38,7 @@ module.exports = {
         completed: false,
         userId: req.user.id,
         tags: tags
+        dueDate: req.body.dueDate,
       }); // Create todo item
       console.log(todo)
       console.log('Todo has been added!'); // Log to console

@@ -12,14 +12,16 @@
 
 <body>
   <div class="todo">
-    <h1><%= user.userName %>s Todos</h1>
+    <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
   </div>
   <div class="todoList">
     <ul>
       <% todos.forEach( el => { %>
       <li class='todoItem' data-id='<%=el._id%>'>
         <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-        <% if (el.todoDetails || el.tags) { %>
+        <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
+        <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
+        <% if (el.todoDetails) { %>
         <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
 
         <% } %>
@@ -38,12 +40,13 @@
     </ul>
   </div>
   <div class="userNumber">
-    <h2><%= user.userName %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
+    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
   </div>
-  <div class="addTodo">
+  <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter todo Item" name='todoItem'>
+      <input type="text" placeholder="Enter Todo Item" name='todoItem'>
       <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+      <input type="datetime-local" name="dueDate">
       <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
       <button type="submit" class="todoSubmit">Submit</button>
     </form>

@@ -23,15 +23,16 @@ const TodoSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    dueDate: {
+      type: Date,
+    },
     todoDetails: {
       // Create todo details
       type: String, // Set type to string
-      required: false, // Set required to false
     },
     subTasks: {
       // Create subTasks
       type: [String], // Set type to array of strings
-      required: false, // Set required to false
     },
     tags: {
       // Create todo tags
