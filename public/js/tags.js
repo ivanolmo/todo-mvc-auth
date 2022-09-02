@@ -21,7 +21,7 @@ async function deleteTag() {
     });
     const data = await response.json(); // Get response
     console.log(data); // Log to console
-    location.reload(); // Reload page
+    this.parentNode.remove();
   } catch (err) {
     // Catch
     console.log(err); // Log to console
