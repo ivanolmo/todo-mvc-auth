@@ -9,4 +9,6 @@ router.post('/createTags', tagsController.createTags); // Set create tag route
 
 router.delete('/deleteTag', tagsController.deleteTag); // Set delete tag route
 
+router.put('/updateTag', tagsController.updateTag); // Set update tag route
+
 module.exports = router; // Export router
