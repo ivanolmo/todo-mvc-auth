@@ -37,7 +37,7 @@ module.exports = {
         todoDetails: req.body.todoDetails,
         completed: false,
         userId: req.user.id,
-        tags: tags
+        tags: tags,
         dueDate: req.body.dueDate,
       }); // Create todo item
       console.log(todo)
