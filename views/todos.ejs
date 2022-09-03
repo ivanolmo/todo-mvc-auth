@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,20 +28,20 @@
         <% } %>
         <p class="todoDetails"><%= el.todoDetails %> </p>
         <% if (el.tags?.length) { %>
-          <section class="tags" data-id=<%= el._id %>>
-              <% el.tags.forEach( el => { %>
-              <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
-            <% }) %>
-          </section>
+        <section class="tags" data-id=<%= el._id %>>
+          <% el.tags.forEach( el => { %>
+          <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
+          <% }) %>
+        </section>
         <% } %>
-        <span class='del'> Delete </span>
+        <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
       </li>
       <% }) %>
 
     </ul>
   </div>
   <div class="userNumber">
-    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
+    <h2><%= user.userName %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
   </div>
   <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
