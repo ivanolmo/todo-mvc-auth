@@ -123,4 +123,5 @@ function addSubTasks() {
 
   subTasksDiv.insertBefore(subTaskInput, addBtn)
 
+  subTaskInput.focus()
 }
