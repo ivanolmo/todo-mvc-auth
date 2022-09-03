@@ -241,3 +241,8 @@ div input .fa-x {
 div.hidden {
   display: none;
 }
+
+.addSubTask {
+    display: flex;
+    flex-direction: column;
+}

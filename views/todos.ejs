@@ -12,36 +12,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <div class="todo">
-        <h1><%= user.userName %>s Todos</h1>
-    </div>
-    <div class="todoList">
-        <ul>
-        <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-        <% }) %>   
-    
-        </ul>
-    </div>
-    <div class="userNumber">
-        <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-    </div>
-    <div class="addTodo">
-        <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="text" placeholder="Add subtask" name="subTasks">
-        <!-- <button>More Subtasks</button> -->
-        <input type="submit">
-        </form>
-    </div>
-        <a id="logoutButton" class="button" href="/logout">Logout</a>
-    
-    <script src="js/main.js"></script>
-=======
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
   </div>
@@ -52,6 +22,9 @@
         <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
         <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
         <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
+        <section class="subTasks">
+
+        </section>
         <% if (el.todoDetails) { %>
         <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
 
@@ -77,6 +50,10 @@
     <form action="/todos/createTodo" method='POST'>
       <input type="text" placeholder="Enter Todo Item" name='todoItem'>
       <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+      <div class="addSubTask">
+        <input type="text" placeholder="Add subtask" name="subTasks">
+        <i id="addSubTaskBtn" class="fa-duotone fa-plus"></i>
+      </div>
       <input type="datetime-local" name="dueDate">
       <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
       <button type="submit" class="todoSubmit">Submit</button>
@@ -86,7 +63,6 @@
 
   <script src="js/main.js"></script>
   <script src="js/tags.js"></script>
->>>>>>> main
 </body>
 
 </html>
