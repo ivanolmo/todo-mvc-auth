@@ -13,4 +13,8 @@ router.put('/markIncomplete', todosController.markIncomplete); // Set mark incom
 
 router.delete('/deleteTodo', todosController.deleteTodo); // Set delete todo route
 
+router.get('/edit/:id', ensureAuth, todosController.editTodo);
+
+router.post('/edit/:id', ensureAuth, todosController.updateTodo);
+
 module.exports = router; // Export router

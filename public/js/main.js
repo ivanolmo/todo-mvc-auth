@@ -1,12 +1,27 @@
+const { json } = require('express');
 const deleteBtn = document.querySelectorAll('.del'); //select all the delete buttons
 const todoItem = document.querySelectorAll('span.not'); // Select all the todo items
-const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
+const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 
-function darkMode() { // Create dark mode function
-  var element = document.body; // Get body element
-  element.classList.toggle("dark-mode"); // Toggle dark mode class
-}
+Array.from(deleteBtn).forEach((el) => {
+  // Loop through delete buttons
+  el.addEventListener('click', deleteTodo); // Add event listener to delete buttons
+});
+
+Array.from(todoItem).forEach((el) => {
+  // Loop through todo items
+  el.addEventListener('click', markComplete); // Add event listener to todo items
+});
+
+Array.from(todoComplete).forEach((el) => {
+  // Loop through completed todo items
+  el.addEventListener('click', markIncomplete); // Add event listener to completed todo items
+});
+
+Array.from(todoItem).forEach((el) => {
+  el.addEventListener('click', editTodo);
+})
 
 Array.from(deleteBtn).forEach((el) => {
   // Loop through delete buttons

@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const Todo = require('../models/Todo'); // Import todo model
 const Tags = require('./tags.js'); // Import tag controller
 const { createTags } = require('./tags');
@@ -95,6 +96,74 @@ module.exports = {
     } catch (err) {
       // Catch
       console.log(err); // Log to console
+    }
+  },
+
+  //   editTodo: async (req, res) => {
+  //     await Todo.findOne({ _id: req.body.todoIdFromJSFile });
+  //     render('edit.ejs');
+  //   },
+  // };
+  // @desc    Show edit page
+  // @route   GET /stories/edit/:id
+  editTodo: async (req, res) => {
+    try {
+      // console.log(req);
+      const todo = await Todo.findOne({
+        _id: req.params.id,
+      }).lean();
+
+      if (!todo) {
+        return res.status(404).json('no todo found');
+      }
+
+      // if (story.user != req.user.id) {
+      //   res.redirect('/stories')
+      // } else {
+      // console.log(todo);
+      res.render('edit', {
+        todo,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(404);
+    }
+  },
+
+  // @desc    Update story
+  // @route   PUT /stories/:id
+  updateTodo: async (req, res) => {
+    try {
+      let todo = await Todo.findById(req.params.id).lean();
+      // console.log(todo);
+      console.log(req.body);
+      if (!todo) {
+        return res.status(404);
+      }
+      const tagArr = [
+        req.body.tag1,
+        req.body.tag2,
+        req.body.tag3,
+        req.body.tag4,
+        req.body.tag5,
+      ];
+      tagArr.filter((str) => str.length >= 1);
+      todo = await Todo.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          todo: req.body.todo,
+          todoDetails: req.body.todoDetails,
+          tags: tagArr,
+        },
+        {
+          returnOriginal: false,
+        }
+      );
+
+      res.redirect('/todos');
+    } catch (err) {
+      console.error(err);
+      return res.status(500);
     }
   },
 };
