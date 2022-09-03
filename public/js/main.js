@@ -3,6 +3,11 @@ const todoItem = document.querySelectorAll('span.not'); // Select all the todo i
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
 const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 
+function darkMode() { // Create dark mode function
+  var element = document.body; // Get body element
+  element.classList.toggle("dark-mode"); // Toggle dark mode class
+}
+
 Array.from(deleteBtn).forEach((el) => {
   // Loop through delete buttons
   el.addEventListener('click', deleteTodo); // Add event listener to delete buttons
