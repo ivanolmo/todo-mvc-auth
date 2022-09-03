@@ -1,4 +1,5 @@
 const Tag = require('../models/Tag'); // Import tag model
+const Todos = require('./todos.js'); // Import todos controller
 
 module.exports = {
   // Export module
@@ -31,11 +32,10 @@ module.exports = {
         )
         tagIds.push(tagId._id)
       }
-      console.log('Tags have been added!'); // Log to console
       if ( !req.body.todoItem ) {
-        res.redirect('/tags'); // Redirect to tags if editing tags in the Tags view
+        res.json(JSON.stringify({tagIds: tagIds}))
       } else {
-        return tagIds // Otherwise return a list of tag IDs
+        return tagIds
       }
     } catch (err) {
       // Catch
@@ -47,7 +47,7 @@ module.exports = {
     try {
       // Try
       await Tag.findOneAndDelete({ _id: req.body.tagId }); // Find tag and delete
-      console.log('Deleted Tag'); // Log to console
+      const taggedTodos =
       res.json('Deleted Tag'); // Send response
     } catch (err) {
       // Catch
@@ -61,11 +61,18 @@ module.exports = {
         { _id: req.body.tagId },
         { tag: req.body.tag }
       )
-      console.log('Updated tag')
       res.json('Updated tag')
     } catch (err) {
       // Catch
       console.log(err); // Log to console
+    }
+  },
+  getTag: async (req, res) => {
+    try {
+      const tag = await Tag.findOne({ _id: req.body.tagId })
+      res.json(tag.tag)
+    } catch (err) {
+      console.log(err)
     }
   }
 };
