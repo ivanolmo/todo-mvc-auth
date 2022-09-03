@@ -16,13 +16,6 @@
         <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <ul class="subTasks">
-                    <% todos.forEach( (el,index) => { %>
-                        <li class="subTask">
-                            <span><%= el.subTasks[index] %> </span>
-                        </li>
-                    <% }) %> 
-                </ul>
                 <span class='del'> Delete </span>
             </li>
         <% }) %>   
