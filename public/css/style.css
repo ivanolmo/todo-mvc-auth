@@ -1,18 +1,21 @@
 /* link text cleaning */
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
+a:link,
+a:visited,
+a:hover,
 a:active {
     text-decoration: none;
+}
+
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
 }
 
 html {
@@ -34,9 +37,18 @@ html {
     border: 1px solid grey;
     border-radius: 5px;
     padding: 5px;
-    margin: 5px;
+    width: 60px;
+    margin: 20px auto;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark-mode-btn {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* landingPage */
@@ -53,8 +65,7 @@ html {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
-.loginButtons,
-#logoutButton {
+.loginButtons {
     text-decoration: none;
     background: #1a1a1a69;
     color: #fff;
@@ -67,6 +78,15 @@ html {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+input[type=submit] {
+    border-radius: 5px;
+    border: 0;
+    width: 80px;
+    height: 25px;
+    font-family: Tahoma;
+    background: #f4f4f4;
 }
 
 /* signup page */
@@ -96,7 +116,31 @@ html {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
+.fa-solid.fa-house {
+    display: flex;
+    justify-content: right;
+}
+
+.fa-solid.fa-circle-half-stroke {
+    display: flex;
+    justify-content: left;
+    font-size: large;
+}
+
 /* todoPage */
+.todoTitle {
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
 .todo {
     background: #1a1a1a69;
     display: flex;
@@ -175,7 +219,7 @@ html {
     text-decoration: underline;
 }
 
-#logoutButton {
+/* #logoutButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,7 +229,7 @@ html {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
+} */
 
 .del {
     color: red;

@@ -6,11 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
   <title>Login</title>
 </head>
-<!-- <div><h1>Login</h1></div> -->
 
-<body class="login">
+<button class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+<a href="/"><i class="fa-solid fa-house"></i></a>
+ <body class="login">
+
+ <h1 class="todoTitle">Login</h1>
+  <div class="title">
   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
   <div class="alert alert-danger"><%= el.msg %></div>
   <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
