@@ -11,4 +11,6 @@ router.delete('/deleteTag', tagsController.deleteTag); // Set delete tag route
 
 router.put('/updateTag', tagsController.updateTag); // Set update tag route
 
+router.put('/getTag', tagsController.getTag); // Set get tag route
+
 module.exports = router; // Export router

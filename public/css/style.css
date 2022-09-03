@@ -19,8 +19,15 @@ body {
 }
 
 html {
+
+    background-color: black;
     font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-image: url('images/bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
     line-height: 1.5;
+    color: rgb(255, 255, 255);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -88,6 +95,7 @@ input[type=submit] {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 75%;
     margin: 25% auto;
     padding: 20px;
     border-radius: 5px;
@@ -96,11 +104,16 @@ input[type=submit] {
 
 /* loginPage */
 .login {
-
+    background: #1a1a1a69;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 500px;
     margin: 25% auto;
-
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .fa-solid.fa-house {
@@ -152,6 +165,7 @@ input[type=submit] {
 }
 
 .userNumber {
+    color: #fff;
     font-size: 20px;
     font-weight: 300;
     text-align: center;
@@ -176,10 +190,10 @@ input[type=submit] {
     gap: 24px;
 }
 
-/* .addTodo input,
+.addTodo input,
 .addTodo textarea {
     width: 100%;
-} */
+}
 
 .todoSubmit {
     padding: 8px 20px;
@@ -249,10 +263,11 @@ input[type=submit] {
 
 section.tags {
   display: flex;
+  flex-wrap: wrap;
 }
 
 div.tag {
-  display: inline-block
+  display: inline-block;
 }
 
 div input .fa-check {
