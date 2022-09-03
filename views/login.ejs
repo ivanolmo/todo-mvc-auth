@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Login</title>
-  </head>
-  <!-- <div><h1>Login</h1></div> -->
 
-  <body class="login">
-    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-    <div class="alert alert-danger"><%= el.msg %></div>
-    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
+  <title>Login</title>
+</head>
+<!-- <div><h1>Login</h1></div> -->
+ <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
+
+ <body class="login">
+<a href="/"><i class="fa-solid fa-house"></i></a>
+ 
+  <div class="title">
+  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
     el => { %>
-    <div class="alert alert-danger"><%= el.msg %></div>
-    <% }) %> <% } %>
-    <form action="/login" method="POST">
-      <input type="email" name="email" placeholder="Email" />
-      <input type="password" name="password" placeholder="Password" />
-      <input type="submit" />
-    </form>
-  </body>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %> <% } %>
+  <form action="/login" method="POST">
+    <input type="email" name="email" placeholder="Email" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="submit" />
+  </div>
+  </form>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
 </html>
