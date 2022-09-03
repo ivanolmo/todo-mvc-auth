@@ -36,6 +36,13 @@
           <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
           <% }) %>
         </section>
+        <section class="subTask" data-id=<%= el._id %>>
+          <ul>
+            <% el.subTasks.forEach( el => { %>
+              <li><%= el %> </li>
+            <% }) %> 
+          </ul>
+        </section>
         <% } %>
         <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
       </li>
@@ -44,7 +51,7 @@
     </ul>
   </div>
   <div class="userNumber">
-    <h2><%= user.userName %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
+    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
   </div>
   <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
