@@ -17,4 +17,8 @@ router.get('/edit/:id', ensureAuth, todosController.editTodo);
 
 router.post('/edit/:id', ensureAuth, todosController.updateTodo);
 
+router.post('/addTags', todosController.addTags); // Set add tags route
+
+router.put('/removeTag', todosController.removeTag) // Set remove tag route
+
 module.exports = router; // Export router
