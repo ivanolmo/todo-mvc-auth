@@ -22,9 +22,6 @@
         <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
         <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
         <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
-        <section class="subTasks">
-
-        </section>
         <% if (el.todoDetails) { %>
         <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
 
