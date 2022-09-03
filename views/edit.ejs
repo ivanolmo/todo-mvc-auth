@@ -5,32 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <!-- needs to be a form where you display
     the current element for todo.todo, todo.tags etc,
 but can change them  -->
-     <form action="/todos/edit/<%=todo._id%>" method="POST"> 
+     <form action="/todos/edit/<%=todo._id%>" method="POST" data-todo-id='<%= todo._id %>'>
         <input type="hidden" name="_method" value="PUT">
         <div class="addTodo">
             <div class="addTodo">
                 <label>Todo:</label>
                 <input type="text" name="todo" placeholder="todo" value="<%= todo.todo %>">
                 <label>Description (optional):</label>
-                <textarea  name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"></textarea>
-                <div>
-                    <% if(todo.tags.length){ %>
-                        <% todo.tags.forEach(function(tag){ %>
-                            <input type="text" name="tag" value='<%= tag %>'>
-                    <% }); %> 
-                </div>
+                <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
+                <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
+                <label>Existing Tags</label>
+                <div class='hint'>(Click red X to remove tag from this todo item only)</div>
+                <section class="tags">
+                  <% todo.tags.forEach( el => { %>
+                    <div class='tag' data-id='<%=el._id%>'>
+                      <i class="fa-solid fa-tag"></i><span class='tagDisplay' data-id='<%=el._id%>'><%= el.tag %></span><i class="fa-solid fa-xmark remove-tag" data-id='<%=el._id%>'></i>
+                    </div>
+                  <% }) %>
+                </section>
+                <section class='addTags'>
+                  <label>Add New Tags</label>
+                  <div class='inputBox'>
+                    <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
+                    <button type="button" class="addTags">Add Tags</button>
+                  </div>
+                </section>
                 <input type="submit">
             </div>
         </div>
     </form>
-    
-    <script src="js/main.js"></script>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/edit.js"></script>
 </body>
 </html>
