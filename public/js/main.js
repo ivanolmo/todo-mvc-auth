@@ -1,4 +1,3 @@
-const { json } = require('express');
 const deleteBtn = document.querySelectorAll('.del'); //select all the delete buttons
 const todoItem = document.querySelectorAll('span.not'); // Select all the todo items
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
@@ -18,10 +17,6 @@ Array.from(todoComplete).forEach((el) => {
   // Loop through completed todo items
   el.addEventListener('click', markIncomplete); // Add event listener to completed todo items
 });
-
-Array.from(todoItem).forEach((el) => {
-  el.addEventListener('click', editTodo);
-})
 
 Array.from(deleteBtn).forEach((el) => {
   // Loop through delete buttons
