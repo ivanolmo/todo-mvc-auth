@@ -193,3 +193,51 @@ input[type=submit] {
 .todoDetails {
     display: none;
 }
+
+.tag {
+  border: 1px solid black;
+  background:rgb(255, 255, 255);
+  color: black;
+  padding: 3px 5px;
+  box-shadow: 3px 5px 10px #888;
+}
+
+.tag .fa-tag {
+  padding: 0px 5px 0px 0px;
+}
+
+.tag .fa-xmark {
+  color: red;
+  padding: 0px 5px;
+}
+
+.tag .fa-pencil {
+  color: blue;
+  padding: 0px 5px;
+}
+
+section.tags {
+  display: flex;
+}
+
+div.tag {
+  display: inline-block
+}
+
+div input .fa-check {
+  position: absolute;
+  right: 30px;
+  top: 40px;
+  color: green;
+}
+
+div input .fa-x {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  color: red;
+}
+
+div.hidden {
+  display: none;
+}
