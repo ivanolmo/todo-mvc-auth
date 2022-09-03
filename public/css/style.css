@@ -1,30 +1,23 @@
 /* link text cleaning */
-a:link {
+a:link, a:visited, a:hover, a:active{
     text-decoration: none;
 }
 
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-}
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+  }
+  
+  .dark-mode {
+    background-color: black;
+    color: white;
+  }
 
 html {
-
-    background-color: black;
     font-family: 'Open Sans', sans-serif;
-    color: #333;
-    background-image: url('images/bg.jpg');
-    background-size: 100%;
-    background-repeat: no-repeat;
     line-height: 1.5;
-    color: rgb(255, 255, 255);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -39,9 +32,14 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+.dark-mode-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* landingPage */
 .title {
-    background: #1a1a1a69;
+    background: #ffffff3f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +66,14 @@ html {
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
+input[type=submit] {
+    border-radius: 5px;
+    border: 0;
+    width: 80px;
+    height:25px;
+    font-family: Tahoma;
+    background: #f4f4f4;
+}
 
 /* signup page */
 .signupForm {
@@ -75,7 +81,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
     margin: 25% auto;
     padding: 20px;
     border-radius: 5px;
@@ -84,16 +89,11 @@ html {
 
 /* loginPage */
 .login {
-    background: #1a1a1a69;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     width: 100%;
     max-width: 500px;
     margin: 25% auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+   
 }
 
 /* todoPage */
@@ -121,7 +121,6 @@ html {
 }
 
 .userNumber {
-    color: #fff;
     font-size: 20px;
     font-weight: 300;
     text-align: center;
@@ -146,10 +145,10 @@ html {
     gap: 24px;
 }
 
-.addTodo input,
+/* .addTodo input,
 .addTodo textarea {
     width: 100%;
-}
+} */
 
 .todoSubmit {
     padding: 8px 20px;
