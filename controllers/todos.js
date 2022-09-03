@@ -1,5 +1,7 @@
 const { render } = require('ejs');
 const Todo = require('../models/Todo'); // Import todo model
+const Tags = require('./tags.js'); // Import tag controller
+const { createTags } = require('./tags');
 
 module.exports = {
   // Export module
@@ -8,11 +10,12 @@ module.exports = {
     console.log(req.user); // Log to console
     try {
       // Try
-      const todoItems = await Todo.find({ userId: req.user.id }); // Find todo items
+      const todoItems = await Todo.find({ userId: req.user.id }).populate('tags'); // Find todo items
       const itemsLeft = await Todo.countDocuments({
         userId: req.user.id,
         completed: false,
       }); // Count items left
+      console.log(todoItems)
       res.render('todos.ejs', {
         todos: todoItems,
         left: itemsLeft,
@@ -26,11 +29,19 @@ module.exports = {
   createTodo: async (req, res) => {
     // Create create todo function
     try {
-      await Todo.create({
+      let tags = null
+      if (req.body.tags.length) {
+        tags = await createTags(req, res)
+      }
+      const todo = await Todo.create({
         todo: req.body.todoItem,
+        todoDetails: req.body.todoDetails,
         completed: false,
         userId: req.user.id,
+        tags: tags,
+        dueDate: req.body.dueDate,
       }); // Create todo item
+      console.log(todo)
       console.log('Todo has been added!'); // Log to console
       res.redirect('/todos'); // Redirect to todos
     } catch (err) {
@@ -97,7 +108,7 @@ module.exports = {
   // @route   GET /stories/edit/:id
   editTodo: async (req, res) => {
     try {
-      console.log(req);
+      // console.log(req);
       const todo = await Todo.findOne({
         _id: req.params.id,
       }).lean();
@@ -109,7 +120,7 @@ module.exports = {
       // if (story.user != req.user.id) {
       //   res.redirect('/stories')
       // } else {
-      console.log(todo);
+      // console.log(todo);
       res.render('edit', {
         todo,
       });

@@ -4,11 +4,13 @@ const mongoose = require('mongoose'); // Import mongoose
 const passport = require('passport'); // Import passport
 const session = require('express-session'); // Import express-session
 const MongoStore = require('connect-mongo')(session); // Import connect-mongo
+
 const flash = require('express-flash'); // Import express-flash
 const logger = require('morgan'); // Import morgan
 const connectDB = require('./config/database'); // Import database
 const mainRoutes = require('./routes/main'); // Import main routes
 const todoRoutes = require('./routes/todos'); // Import todo routes
+const tagRoutes = require('./routes/tags'); // Import tag routes
 
 require('dotenv').config({ path: './config/.env' }); // Import dotenv
 
@@ -33,6 +35,14 @@ app.use(
   })
 );
 
+// moment middleware
+// const moment = require('moment');
+
+// app.use((req, res, next) => {
+//   res.locals.moment = moment;
+//   next();
+// });
+
 // Passport middleware
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Set passport session
@@ -41,6 +51,7 @@ app.use(flash()); // Set flash
 
 app.use('/', mainRoutes); // Set main routes
 app.use('/todos', todoRoutes); // Set todo routes
+app.use('/tags', tagRoutes); // Set tag routes
 
 app.listen(process.env.PORT, () => {
   // Listen to port
