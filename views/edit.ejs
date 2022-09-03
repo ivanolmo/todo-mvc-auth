@@ -9,8 +9,6 @@
 </head>
 <body>
 
-    <p>Hi</p>
-    <div><%= todo.todo %></div>
     <!-- needs to be a form where you display
     the current element for todo.todo, todo.tags etc,
 but can change them  -->
@@ -22,21 +20,12 @@ but can change them  -->
                 <input type="text" name="todo" placeholder="todo" value="<%= todo.todo %>">
                 <label>Description (optional):</label>
                 <textarea  name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"></textarea>
-                 
                 <div>
-                <% if(todo.tags.length >= 1){ %>
-                    <% todo.tags.forEach(function(tag){ %>
-                        <input type="text" name="tag" value='<%= tag %>'>
-                <% }); %>
-                <% } else{ %>  
-                    <% for(let i=1;i<=5;i++){ %>
-                        <% if(todo.tags[i-1]) {%>
-                            <input type="text" name="tag<%=i%>" placeholder='tag <%= i %>'> 
-                        <% } %>
-     
-                   <% } %>
-                <% } %> 
-            </div>
+                    <% if(todo.tags.length){ %>
+                        <% todo.tags.forEach(function(tag){ %>
+                            <input type="text" name="tag" value='<%= tag %>'>
+                    <% }); %> 
+                </div>
                 <input type="submit">
             </div>
         </div>
