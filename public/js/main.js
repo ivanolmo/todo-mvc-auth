@@ -3,10 +3,15 @@ const todoItem = document.querySelectorAll('span.not'); // Select all the todo i
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
 const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 const addSubTaskBtn = document.getElementById('addSubTaskBtn') // button for adding additional subtasks
+const delSubTaskBtn = document.getElementById('delSubTaskBtn')
 const userPrefs = (JSON.parse(localStorage.getItem('userPrefs')) || {})
 
 if (addSubTaskBtn) {
-addSubTaskBtn.addEventListener('click', addSubTasks)
+  addSubTaskBtn.addEventListener('click', addSubTasks)
+}
+
+if (delSubTaskBtn) {
+  delSubTaskBtn.addEventListener('click', delSubTasks)
 }
 
 if (userPrefs.darkMode) {
@@ -138,16 +143,19 @@ function toggleDetails() {
 }
 
 function addSubTasks() {
-  const subTasksDiv = document.querySelector('.addSubTask') // select div that contains subtasks
-  const addBtn = document.getElementById('addSubTaskBtn') // select add subtasks button
-  const delBtn = document.createElement('<i class="fa-solid fa-minus"></i>') // create delete button
+  const subTaskContainer = document.querySelector('.subTaskContainer') // div that contains subtask inputs
   const subTaskInput = document.createElement('input') // create new input element
 
   subTaskInput.type = 'text' // gives new input type of text
   subTaskInput.placeholder = 'Add subtask' // new input placeholder
   subTaskInput.name = 'subTasks' // new input name of subTasks
 
-  subTasksDiv.insertBefore(subTaskInput, addBtn) // appends new input into the subTasks div before the add button
+  subTaskContainer.appendChild(subTaskInput)
 
   subTaskInput.focus() // auto focus on the new input
+}
+
+function delSubTasks() {
+  const subTaskContainer = document.querySelector('.subTaskContainer')
+  subTaskContainer.removeChild(subTaskContainer.lastChild)
 }
