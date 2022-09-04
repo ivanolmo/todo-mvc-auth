@@ -283,4 +283,12 @@ div.hidden {
 .addSubTask {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.addSubTaskBtn {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
 }
