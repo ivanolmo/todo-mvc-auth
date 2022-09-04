@@ -5,29 +5,31 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
   <title>Login</title>
 </head>
 
 <button class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
 <a href="/"><i class="fa-solid fa-house"></i></a>
- <body class="login">
 
- <h1 class="todoTitle">Login</h1>
+<body class="login">
+
+  <h1 class="todoTitle">Login</h1>
   <div class="title">
-  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-  <div class="alert alert-danger"><%= el.msg %></div>
-  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
     el => { %>
-  <div class="alert alert-danger"><%= el.msg %></div>
-  <% }) %> <% } %>
-  <form action="/login" method="POST">
-    <input type="email" name="email" placeholder="Email" />
-    <input type="password" name="password" placeholder="Password" />
-    <input type="submit" />
-  </form>
+    <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %> <% } %>
+    <form action="/login" method="POST">
+      <input type="email" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <input type="submit" />
+    </form>
 
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
