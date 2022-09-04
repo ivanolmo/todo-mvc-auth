@@ -3,12 +3,21 @@ const todoItem = document.querySelectorAll('span.not'); // Select all the todo i
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
 const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 const addSubTaskBtn = document.getElementById('addSubTaskBtn') // button for adding additional subtasks
+const userPrefs = (JSON.parse(localStorage.getItem('userPrefs')) || {})
 
-addSubTaskBtn.addEventListener('click', addSubTasks)
+if (addSubTaskBtn) {
+  addSubTaskBtn.addEventListener('click', addSubTasks)
+}
+
+if (userPrefs.darkMode) {
+  document.body.classList.add('dark-mode')
+}
 
 function darkMode() { // Create dark mode function
   var element = document.body; // Get body element
   element.classList.toggle("dark-mode"); // Toggle dark mode class
+  userPrefs.darkMode = element.classList.contains('dark-mode')
+  localStorage.setItem('userPrefs', JSON.stringify(userPrefs))
 }
 
 Array.from(deleteBtn).forEach((el) => {
