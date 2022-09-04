@@ -101,17 +101,20 @@ input[type=submit] {
 }
 
 /* loginPage */
+
+.navButtons {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
 .login {
-    background: #1a1a1a69;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 500px;
     margin: 25% auto;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    flex-direction: column;
 }
 
 .fa-solid.fa-house {
@@ -142,11 +145,11 @@ input[type=submit] {
 .todo {
     background: #1a1a1a69;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 500px;
+    width: 60%;
+    /* max-width: 500px; */
     margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
