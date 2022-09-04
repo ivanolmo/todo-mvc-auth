@@ -9,12 +9,12 @@
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
   <title>Login</title>
 </head>
-<!-- <div><h1>Login</h1></div> -->
- <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
 
- <body class="login">
+<button class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
 <a href="/"><i class="fa-solid fa-house"></i></a>
- 
+ <body class="login">
+
+ <h1 class="todoTitle">Login</h1>
   <div class="title">
   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
   <div class="alert alert-danger"><%= el.msg %></div>
@@ -26,8 +26,8 @@
     <input type="email" name="email" placeholder="Email" />
     <input type="password" name="password" placeholder="Password" />
     <input type="submit" />
-  </div>
   </form>
+
+  <script src="js/main.js"></script>
 </body>
-<script type="text/javascript" src="js/main.js"></script>
 </html>
