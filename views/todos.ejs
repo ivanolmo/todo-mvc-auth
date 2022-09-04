@@ -14,8 +14,11 @@
   <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
-  </div>
+  
   <div class="todoList">
+    <div class="userNumber">
+      <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
+    </div>
     <ul>
       <% todos.forEach( el => { %>
       <li class='todoItem' data-id='<%=el._id%>'>
@@ -44,9 +47,6 @@
       <% }) %>
     </ul>
   </div>
-  <div class="userNumber">
-    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
-  </div>
   <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
       <input type="text" placeholder="Enter Todo Item" name='todoItem'>
@@ -63,7 +63,8 @@
   <a id="logoutButton" class="button" href="/logout">Logout</a>
 
   <script src="js/main.js"></script>
-  <script src="js/tags.js"></script>
+  <script src="js/tags.js"></script></div>
 </body>
+
 
 </html>
