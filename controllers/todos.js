@@ -34,6 +34,7 @@ module.exports = {
       const todo = await Todo.create({
         todo: req.body.todoItem,
         todoDetails: req.body.todoDetails,
+        subTasks: req.body.subTasks,        
         completed: false,
         userId: req.user.id,
         tags: tags,

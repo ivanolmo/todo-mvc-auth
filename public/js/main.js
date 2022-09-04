@@ -1,7 +1,11 @@
 const deleteBtn = document.querySelectorAll('.del'); //select all the delete buttons
 const todoItem = document.querySelectorAll('span.not'); // Select all the todo items
 const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
+
+const addSubTaskBtn = document.getElementById('addSubTaskBtn') // button for adding additional subtasks
+addSubTaskBtn.addEventListener('click', addSubTasks)
 const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
+
 
 function darkMode() { // Create dark mode function
   var element = document.body; // Get body element
@@ -123,4 +127,18 @@ function toggleDetails() {
     // Else
     todoDetails.style.display = 'block'; // Show todo details
   }
+
+}
+
+function addSubTasks() {
+  const subTasksDiv = document.querySelector('.addSubTask') // select div that contains subtasks
+  const addBtn = document.getElementById('addSubTaskBtn') // select add subtasks button
+  const subTaskInput = document.createElement('input') // create new input element
+  subTaskInput.type = 'text' // gives new input type of text
+  subTaskInput.placeholder = 'Add subtask' // new input placeholder
+  subTaskInput.name = 'subTasks' // new input name of subTasks
+
+  subTasksDiv.insertBefore(subTaskInput, addBtn) // appends new input into the subTasks div before the add button
+
+  subTaskInput.focus() // auto focus on the new input
 }
