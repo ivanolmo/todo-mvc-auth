@@ -11,7 +11,7 @@ body {
     margin: 0;
     background-color: white;
     color: black;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 .dark-mode {
@@ -20,11 +20,8 @@ body {
 }
 
 html {
-
-    background-color: black;
     font-family: 'Open Sans', sans-serif;
     color: #333;
-    background-image: url('images/bg.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     line-height: 1.5;
@@ -145,6 +142,7 @@ input[type=submit] {
 .todo {
     background: #1a1a1a69;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -160,13 +158,9 @@ input[type=submit] {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background: #1a1a1a69;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .userNumber {
-    color: #fff;
     font-size: 20px;
     font-weight: 300;
     text-align: center;
@@ -176,11 +170,7 @@ input[type=submit] {
 .addTodo {
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
     padding: 20px;
-    background: #1a1a1a69;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -193,7 +183,7 @@ input[type=submit] {
 
 .addTodo input,
 .addTodo textarea {
-    width: 100%;
+
 }
 
 .todoSubmit {
