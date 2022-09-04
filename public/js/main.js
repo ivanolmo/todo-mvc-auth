@@ -6,7 +6,7 @@ const addSubTaskBtn = document.getElementById('addSubTaskBtn') // button for add
 const userPrefs = (JSON.parse(localStorage.getItem('userPrefs')) || {})
 
 if (addSubTaskBtn) {
-  addSubTaskBtn.addEventListener('click', addSubTasks)
+addSubTaskBtn.addEventListener('click', addSubTasks)
 }
 
 if (userPrefs.darkMode) {
@@ -140,7 +140,9 @@ function toggleDetails() {
 function addSubTasks() {
   const subTasksDiv = document.querySelector('.addSubTask') // select div that contains subtasks
   const addBtn = document.getElementById('addSubTaskBtn') // select add subtasks button
+  const delBtn = document.createElement('<i class="fa-solid fa-minus"></i>') // create delete button
   const subTaskInput = document.createElement('input') // create new input element
+
   subTaskInput.type = 'text' // gives new input type of text
   subTaskInput.placeholder = 'Add subtask' // new input placeholder
   subTaskInput.name = 'subTasks' // new input name of subTasks
