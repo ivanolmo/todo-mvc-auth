@@ -11,7 +11,10 @@
 </head>
 
 <body>
-  <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
+  <div class="navButtons">
+    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    <a href="/"><i class="fa-solid fa-house"></i></a>
+    </div>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
   

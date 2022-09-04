@@ -11,9 +11,13 @@
 </head>
 
 <body>
-  <button class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+  
+  <div class="navButtons">
+    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    <a href="/"><i class="fa-solid fa-house"></i></a>
+    </div>
 
-  <a href="/"><i class="fa-solid fa-house"></i></a>
+    <body class="login">
 
   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
   <div class="alert alert-danger"><%= el.msg %></div>

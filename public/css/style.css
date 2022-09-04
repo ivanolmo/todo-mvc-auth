@@ -91,10 +91,12 @@ input[type=submit] {
 .signupForm {
     background: #1a1a1a69;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    margin: 25% auto;
+    gap: 24px;
+    width: 100%;
+    max-width: 500px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
@@ -104,15 +106,15 @@ input[type=submit] {
 
 .navButtons {
     width: 100%;
-    max-width: 500px;
+    align-items: center;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 25% auto;
     padding: 20px;
     flex-direction: column;
 }
@@ -122,11 +124,7 @@ input[type=submit] {
     justify-content: right;
 }
 
-.fa-solid.fa-circle-half-stroke {
-    display: flex;
-    justify-content: left;
-    font-size: large;
-}
+
 
 /* todoPage */
 .todoTitle {
@@ -145,7 +143,7 @@ input[type=submit] {
 .todo {
     background: #1a1a1a69;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 60%;
