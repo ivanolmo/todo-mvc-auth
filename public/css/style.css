@@ -20,13 +20,12 @@ body {
 }
 
 html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;
     background-size: 100%;
     background-repeat: no-repeat;
     line-height: 1.5;
     color: rgb(255, 255, 255);
-    font-family: 'Roboto', sans-serif;
 }
 
 .button {
