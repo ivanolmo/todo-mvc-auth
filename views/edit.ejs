@@ -22,6 +22,12 @@ but can change them  -->
                 <label>Description (optional):</label>
                 <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
                 <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
+                <label>Subtasks</label>
+                <div class="subTasks">
+                  <% todo.subTasks.forEach ( el => { %> 
+                    <input type="text" value="<%= el %>" name="subTasks">
+                  <% }) %> 
+                </div>
                 <label>Existing Tags</label>
                 <div class='hint'>(Click red X to remove tag from this todo item only)</div>
                 <section class="tags">
