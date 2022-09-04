@@ -12,62 +12,59 @@
 </head>
 
 <body>
-<button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
-  <div class="todo">
-    <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
-  </div>
-  <div class="todoList">
-    <ul>
-      <% todos.forEach( el => { %>
-      <li class='todoItem' data-id='<%=el._id%>'>
-        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-        <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
-        <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
-        <% if (el.todoDetails) { %>
-        <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
+    <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
+    <div class="todo">
+      <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
+    </div>
+    <div class="todoList">
+        <ul>
+        <% todos.forEach( el => { %>
+            <li class='todoItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+								<span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
+								<span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
+                <p class="todoDetails"><%= el.todoDetails %> </p>
+                <% if (el.tags?.length) { %>
+                  <section class="tags" data-id=<%= el._id %>>
+                      <% el.tags.forEach( el => { %>
+                      <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
+                    <% }) %>
+                  </section>
+                  <section class="subTask" data-id=<%= el._id %>>
+                    <ul>
+                      <% el.subTasks.forEach( el => { %>
+                        <li><%= el %> </li>
+                      <% }) %>
+                    </ul>
+                  </section>
 
-        <% } %>
-        <p class="todoDetails"><%= el.todoDetails %> </p>
-        <% if (el.tags?.length) { %>
-        <section class="tags" data-id=<%= el._id %>>
-          <% el.tags.forEach( el => { %>
-          <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
-          <% }) %>
-        </section>
-        <section class="subTask" data-id=<%= el._id %>>
-          <ul>
-            <% el.subTasks.forEach( el => { %>
-              <li><%= el %> </li>
-            <% }) %> 
-          </ul>
-        </section>
-        <% } %>
-        <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
-      </li>
-      <% }) %>
+                <% } %>
+                <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+                <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
+            </li>
+        <% }) %>
+        </ul>
+    </div>
+    <div class="userNumber">
+        <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
+    </div>
+    <div class="addTodo" name="addTodoItem">
+        <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+        <div class="addSubTask">
+          <input type="text" placeholder="Add subtask" name="subTasks">
+          <i id="addSubTaskBtn" class="fa-duotone fa-plus"></i>
+        </div>
+				<input type="datetime-local" name="dueDate">
+        <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
+        <input type="submit">
+        </form>
+    </div>
+    <a id="logoutButton" class="button" href="/logout">Logout</a>
 
-    </ul>
-  </div>
-  <div class="userNumber">
-    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
-  </div>
-  <div class="addTodo" name="addTodoItem">
-    <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-      <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
-      <div class="addSubTask">
-        <input type="text" placeholder="Add subtask" name="subTasks">
-        <i id="addSubTaskBtn" class="fa-duotone fa-plus"></i>
-      </div>
-      <input type="datetime-local" name="dueDate">
-      <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
-      <button type="submit" class="todoSubmit">Submit</button>
-    </form>
-  </div>
-  <a href="/tags">Go to Tag Viewer</a><a id="logoutButton" class="button" href="/logout">Logout</a>
-
-  <script src="js/main.js"></script>
-  <script src="js/tags.js"></script>
-
+    <script src="js/main.js"></script>
+    <script src="js/tags.js"></script>
 </body>
+
 </html>
