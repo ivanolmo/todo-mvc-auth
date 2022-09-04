@@ -15,6 +15,12 @@
   <!-- needs to be a form where you display
     the current element for todo.todo, todo.tags etc,
 but can change them  -->
+<div class="navButtons">
+  <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
+  <a href="/todos"><i class="fa-solid fa-house"></i></a>
+  </div>
+
+<div class="editForm">
   <form action="/todos/edit/<%=todo._id%>" method="POST" data-todo-id='<%= todo._id %>'>
     <input type="hidden" name="_method" value="PUT">
     <div class="addTodo">
@@ -44,6 +50,7 @@ but can change them  -->
       </div>
     </div>
   </form>
+</div>
 
   <script src="/js/main.js"></script>
   <script src="/js/edit.js"></script>
