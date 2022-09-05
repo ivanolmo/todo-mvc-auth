@@ -143,12 +143,17 @@ module.exports = {
       if (!todo) {
         return res.status(404);
       }
+      let tags = todo.tags
+      if (req.body.tags.length) {
+        tags = tags.concat(await createTags(req, res))
+      }
       todo = await Todo.findOneAndUpdate(
         { _id: req.params.id },
         {
           todo: req.body.todo,
           todoDetails: req.body.todoDetails,
-          dueDate: req.body.dueDate
+          dueDate: req.body.dueDate,
+          tags: tags
         },
         {
           returnOriginal: false,
@@ -181,7 +186,7 @@ module.exports = {
           returnOriginal: false
         }
       )
-      res.json(JSON.stringify({tagIds: result.tags}))
+      res.json({tagIds: result.tags})
     } catch (err) {
       console.error(err)
       return res.status(500)
