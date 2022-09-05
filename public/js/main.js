@@ -145,12 +145,21 @@ function toggleDetails() {
 function addSubTasks() {
   const subTaskContainer = document.querySelector('.subTaskContainer') // div that contains subtask inputs
   const subTaskInput = document.createElement('input') // create new input element
+  const addBtn = document.getElementById('addSubTaskBtn')
+  const delBtn = document.createElement('i')
+  const inputDiv = document.createElement('div')
 
+  delBtn.classList.add('fa-solid')
+  delBtn.classList.add('fa-minus')
+  
   subTaskInput.type = 'text' // gives new input type of text
   subTaskInput.placeholder = 'Add subtask' // new input placeholder
   subTaskInput.name = 'subTasks' // new input name of subTasks
 
-  subTaskContainer.appendChild(subTaskInput)
+  inputDiv.appendChild(subTaskInput)
+  inputDiv.appendChild(delBtn)
+
+  subTaskContainer.insertBefore(inputDiv, addBtn)
 
   subTaskInput.focus() // auto focus on the new input
 }
