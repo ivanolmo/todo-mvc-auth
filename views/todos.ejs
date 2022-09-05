@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <title>Todos</title>
 </head>
 
@@ -17,42 +17,68 @@
   <div class="navButtons">
     <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
     <a href="/"><i class="fa-solid fa-house"></i></a>
-    </div>
+  </div>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
-  
-  <div class="todoList">
-    <div class="userNumber">
-      <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
-    </div>
-    <ul>
-      <% todos.forEach( el => { %>
-      <li class='todoItem' data-id='<%=el._id%>'>
-        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-        <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
-        <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
-        <p class="todoDetails"><%= el.todoDetails %> </p>
-        <% if (el.tags?.length) { %>
-        <section class="tags" data-id=<%= el._id %>>
-          <% el.tags.forEach( el => { %>
-          <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
-          <% }) %>
-        </section>
-        <section class="subTask" data-id=<%= el._id %>>
+    <div class="todoList">
+      <div class="userNumber">
+        <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
+      </div>
+      <ul>
+        <% todos.forEach( el => { %>
+        <li class='todoItem' data-id='<%=el._id%>'>
+          <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+          <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
+          <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
+          <% if (el.todoDetails) { %>
+          <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
+          <% } %>
+          <p class="todoDetails"><%= el.todoDetails %> </p>
+          <% if (el.tags?.length) { %>
+            <section class="tags" data-todo-id='<%= el._id %>'>
+              <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+                <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
+              <% }) %>
+            </section>
+          <% } %>
+          <section class="subTask" data-id=<%= el._id %>>
           <ul>
             <% el.subTasks.forEach( el => { %>
             <li><%= el %> </li>
             <% }) %>
           </ul>
-        </section>
+          </section>
+          <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+          <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="addTodo" name="addTodoItem">
+      <form action="/todos/createTodo" method='POST' name="todoForm" onsubmit='return validateForm()'>
+        <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
+        <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+        <div class="addSubTask">
+          <div class="subTaskContainer">
+          <input type="text" placeholder="Add subtask" name="subTasks">
+          </div>
+        <div class="subTaskBtns">
+          <i id="addSubTaskBtn" class="fa-duotone fa-plus addSubTaskBtn">Add Subtask</i>
+            <i id="delSubTaskBtn" class="fa-solid fa-minus"></i>
+        </div>
+      </div>
+        <input type="datetime-local" id="dueDate" name="dueDate">
+        <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
+        <button type="submit" class="todoSubmit">Submit</button>
+      </form>
+    </div>
+    <a id="logoutButton" class="button" href="/logout">Logout</a>
 
-        <% } %>
-        <a href='/todos/edit/<%=el._id %>'><span class='edit'><i class="fa-regular fa-pen-to-square"></i></span></a>
-        <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
-      </li>
-      <% }) %>
-    </ul>
+    <script src="/js/main.js"></script>
+    <script src="/js/tags.js"></script>
+    <script src="/js/form.js"></script>
   </div>
+<<<<<<< HEAD
   <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
       <input type="text" placeholder="Enter Todo Item" name='todoItem'>
@@ -76,7 +102,7 @@
   <script src="js/main.js"></script>
   <script src="js/tags.js"></script>
 </div>
+=======
+>>>>>>> main
 </body>
-
-
 </html>

@@ -1,11 +1,10 @@
 const Todo = require('../models/Todo'); // Import todo model
-const { createTags } = require('./tags');
+const { createTags } = require('./tags'); // Import tags controller
 
 module.exports = {
   // Export module
   getTodos: async (req, res) => {
     // Create get todos function
-    console.log(req.user); // Log to console
     try {
       // Try
       const todoItems = await Todo.find({ userId: req.user.id }).populate('tags'); // Find todo items
@@ -13,7 +12,6 @@ module.exports = {
         userId: req.user.id,
         completed: false,
       }); // Count items left
-      console.log(todoItems)
       res.render('todos.ejs', {
         todos: todoItems,
         left: itemsLeft,
@@ -21,15 +19,17 @@ module.exports = {
       }); // Render todos.ejs
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   createTodo: async (req, res) => {
     // Create create todo function
     try {
-      let tags = null
+      let tags
       if (req.body.tags.length) {
         tags = await createTags(req, res)
+      } else {
+        tags = []
       }
       const todo = await Todo.create({
         todo: req.body.todoItem,
@@ -40,12 +40,10 @@ module.exports = {
         tags: tags,
         dueDate: req.body.dueDate,
       }); // Create todo item
-      console.log(todo)
-      console.log('Todo has been added!'); // Log to console
       res.redirect('/todos'); // Redirect to todos
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   markComplete: async (req, res) => {
@@ -59,11 +57,10 @@ module.exports = {
           completed: true, // Set completed to true
         }
       );
-      console.log('Marked Complete'); // Log to console
       res.json('Marked Complete'); // Send response
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   markIncomplete: async (req, res) => {
@@ -77,11 +74,10 @@ module.exports = {
           completed: false, // Set completed to false
         }
       );
-      console.log('Marked Incomplete'); // Log to console
       res.json('Marked Incomplete'); // Send response
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   deleteTodo: async (req, res) => {
@@ -90,11 +86,21 @@ module.exports = {
     try {
       // Try
       await Todo.findOneAndDelete({ _id: req.body.todoIdFromJSFile }); // Find todo item and delete
-      console.log('Deleted Todo'); // Log to console
       res.json('Deleted It'); // Send response
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
+    }
+  },
+  findTodos: async (req, res) => {
+    try {
+      const foundTodos = await Todo.find(req.filters)
+      const todoData = await foundTodos.json();
+      console.log(foundTodos)
+      console.log(todoData)
+      res.json(JSON.stringify(todoData))
+    } catch (err) {
+      console.error(err)
     }
   },
 
@@ -137,12 +143,17 @@ module.exports = {
       if (!todo) {
         return res.status(404);
       }
+      let tags = todo.tags
+      if (req.body.tags.length) {
+        tags = tags.concat(await createTags(req, res))
+      }
       todo = await Todo.findOneAndUpdate(
         { _id: req.params.id },
         {
           todo: req.body.todo,
           todoDetails: req.body.todoDetails,
           dueDate: req.body.dueDate,
+          tags: tags,
           subTasks: req.body.subTasks
         },
         {
@@ -176,12 +187,14 @@ module.exports = {
           returnOriginal: false
         }
       )
-      res.json(JSON.stringify({tagIds: result.tags}))
+      res.json({tagIds: result.tags})
     } catch (err) {
       console.error(err)
       return res.status(500)
     }
   },
+  // @desc  Removes a tag from a specific todo
+  // @route /todos/removeTag
   removeTag: async (req, res) => {
     try {
       await Todo.findOneAndUpdate(
@@ -191,6 +204,28 @@ module.exports = {
         }}
       )
       res.json(true)
+    } catch (err) {
+      console.error(err)
+      return res.status(500)
+    }
+  },
+  // @desc  Deletes a tag from all todos
+  // @route /todos/deleteTag
+  deleteTag: async (req, res) => {
+    try {
+      const taggedTodos = await Todo.find({tags: req.body.tagId})
+      if (taggedTodos) {
+        taggedTodos.forEach(async (el) => {
+          await Todo.findOneAndUpdate(
+            { _id: el._id },
+            { $pullAll: {
+              tags: [req.body.tagId]
+            }}
+          )
+          //console.log(`Delete Tag ${req.body.tagId} from todo id ${el._id}`)
+        })
+      }
+      res.json({success: true})
     } catch (err) {
       console.error(err)
       return res.status(500)
