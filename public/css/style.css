@@ -182,7 +182,7 @@ input[type=submit] {
 
 .addTodo input,
 .addTodo textarea {
-
+    width: 100%;
 }
 
 .todoSubmit {
@@ -296,4 +296,13 @@ div.hidden {
 .addSubTask {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.addSubTaskBtn {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
 }
