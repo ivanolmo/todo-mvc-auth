@@ -125,13 +125,18 @@ function toggleDetails() {
 
 function addSubTasks() {
   const subTasksDiv = document.querySelector('.addSubTask'); // select div that contains subtasks
-  const addBtn = document.getElementById('addSubTaskBtn'); // select add subtasks button
-  const subTaskInput = document.createElement('input'); // create new input element
-  subTaskInput.type = 'text'; // gives new input type of text
-  subTaskInput.placeholder = 'Add subtask'; // new input placeholder
-  subTaskInput.name = 'subTasks'; // new input name of subTasks
+  const subTaskItem = document.querySelector('.subTaskItem').cloneNode(true); // clone first subtask item
 
-  subTasksDiv.insertBefore(subTaskInput, addBtn); // appends new input into the subTasks div before the add button
+  subTaskItem.childNodes[1].value = ''; // clear input value if any
+  subTasksDiv.appendChild(subTaskItem); // appends new input into the subTasks div
+  subTaskItem.childNodes[1].focus(); // auto focus on the new input
+}
 
-  subTaskInput.focus(); // auto focus on the new input
+function delSubTask(el) {
+  const subTasksDiv = document.querySelector('.addSubTask'); // select div that contains subtasks
+  const subTaskItem = el.closest('div.subTaskItem'); // select the subtask item div to be deleted
+
+  if (subTasksDiv.childElementCount > 1) {
+    subTaskItem.remove(); // remove item if there is more than one
+  }
 }
