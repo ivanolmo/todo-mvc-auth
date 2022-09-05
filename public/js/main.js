@@ -10,9 +10,10 @@ if (addSubTaskBtn) {
   addSubTaskBtn.addEventListener('click', addSubTasks)
 }
 
-if (delSubTaskBtn) {
-  delSubTaskBtn.addEventListener('click', delSubTasks)
-}
+// this function was commented out below
+// if (delSubTaskBtn) {
+//   delSubTaskBtn.addEventListener('click', delSubTasks)
+// }
 
 if (userPrefs.darkMode) {
   document.body.classList.add('dark-mode')
@@ -151,7 +152,7 @@ function addSubTasks() {
 
   delBtn.classList.add('fa-solid')
   delBtn.classList.add('fa-minus')
-  delBtn.addEventListener('click', (e) => {
+  delBtn.addEventListener('click', (e) => { // adds event listener to newly created delete button to delete its parent node
     e.target.parentNode.remove()
   })
   
@@ -159,8 +160,8 @@ function addSubTasks() {
   subTaskInput.placeholder = 'Add subtask' // new input placeholder
   subTaskInput.name = 'subTasks' // new input name of subTasks
 
-  inputDiv.appendChild(subTaskInput)
-  inputDiv.appendChild(delBtn)
+  inputDiv.appendChild(subTaskInput) // inserts new input into a container div
+  inputDiv.appendChild(delBtn) // inserts new delete button into a container div
 
   // subTaskContainer.insertBefore(inputDiv, addBtn)
   subTaskContainer.appendChild(inputDiv)
@@ -168,6 +169,7 @@ function addSubTasks() {
   subTaskInput.focus() // auto focus on the new input
 }
 
+// commented how this code because its function is incorporated in the addSubTask function
 // function delSubTasks() {
 //   const subTaskContainer = document.querySelector('.subTaskContainer')
 //   subTaskContainer.removeChild(subTaskContainer.lastChild)
