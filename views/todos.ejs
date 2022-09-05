@@ -30,10 +30,15 @@
           <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
           <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
           <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
+          
           <% if (el.todoDetails) { %>
-          <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
-          <% } %>
+           
+            <label for="toggleDetails">Details: </label>
+            <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
+            
+            <% } %>
           <p class="todoDetails"><%= el.todoDetails %> </p>
+      
           <% if (el.tags?.length) { %>
             <section class="tags" data-todo-id='<%= el._id %>'>
               <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
@@ -48,8 +53,11 @@
             <% }) %>
           </ul>
           </section>
-          <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
-          <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
+          <section class="buttonContainer">
+            
+            <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+            <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
+          </section>
         </li>
         <% }) %>
       </ul>

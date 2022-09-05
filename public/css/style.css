@@ -243,7 +243,20 @@ input[type=submit] {
 .todoDetails {
     display: none;
 }
+.todo .todoList ul{
+    margin: 0;
+    padding: 0;
+}
 
+ .todoList ul li{
+    padding: 0.6rem 6rem;
+    display: flex;
+    flex-direction: column;
+    
+    /* align-items: center; */
+    /* margin: 0; */
+    /* color: purple;  */
+} 
 .tag {
   border: 1px solid black;
   background:rgb(255, 255, 255);
