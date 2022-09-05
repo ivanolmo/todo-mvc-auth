@@ -151,6 +151,9 @@ function addSubTasks() {
 
   delBtn.classList.add('fa-solid')
   delBtn.classList.add('fa-minus')
+  delBtn.addEventListener('click', (e) => {
+    e.target.parentNode.remove()
+  })
   
   subTaskInput.type = 'text' // gives new input type of text
   subTaskInput.placeholder = 'Add subtask' // new input placeholder
@@ -159,12 +162,13 @@ function addSubTasks() {
   inputDiv.appendChild(subTaskInput)
   inputDiv.appendChild(delBtn)
 
-  subTaskContainer.insertBefore(inputDiv, addBtn)
+  // subTaskContainer.insertBefore(inputDiv, addBtn)
+  subTaskContainer.appendChild(inputDiv)
 
   subTaskInput.focus() // auto focus on the new input
 }
 
-function delSubTasks() {
-  const subTaskContainer = document.querySelector('.subTaskContainer')
-  subTaskContainer.removeChild(subTaskContainer.lastChild)
-}
+// function delSubTasks() {
+//   const subTaskContainer = document.querySelector('.subTaskContainer')
+//   subTaskContainer.removeChild(subTaskContainer.lastChild)
+// }
