@@ -20,13 +20,12 @@ body {
 }
 
 html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;
     background-size: 100%;
     background-repeat: no-repeat;
     line-height: 1.5;
     color: rgb(255, 255, 255);
-    font-family: 'Roboto', sans-serif;
 }
 
 .button {
@@ -169,7 +168,6 @@ input[type=submit] {
 }
 
 .addTodo {
-    width: 100%;
     max-width: 500px;
     padding: 20px;
     text-align: center;
@@ -190,6 +188,21 @@ input[type=submit] {
 .todoSubmit {
     padding: 8px 20px;
     cursor: pointer;
+}
+
+/* Edit Page */
+.editForm {
+    background: #1a1a1a69;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .logout {
