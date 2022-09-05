@@ -12,23 +12,18 @@
 
 <body>
   <h1>Tags</h1>
-  <section class="tags">
-    <% tags.forEach( el => { %>
-    <div class='tag' data-id='<%=el._id%>'>
-      <div class='tagDisplayContainer' data-id='<%=el._id%>'>
-        <i class="fa-solid fa-tag"></i><span class='tagDisplay' data-id='<%=el._id%>'><%= el.tag %></span><i class="fa-solid fa-pencil edit-tag" data-id='<%=el._id%>'></i><i class="fa-solid fa-xmark delete-tag" data-id='<%=el._id%>'></i>
-      </div>
-      <div class='tagEditContainer hidden' data-id='<%= el._id %>'>
-        <input type='text' value='<%= el.tag %>' name='tag' class='edit-tag' data-id='<%= el._id %>'><i class='fa-solid fa-check save-edit'></i><i class='fa-solid fa-x cancel-edit'></i>
-      </div>
-    </div>
-    <% }) %>
+  <section id='tags' class="tags">
+    <% if (tags.length ) { %>
+      <% tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (tag) => { %>
+        <%- include('partials/tag.ejs', {tag: tag, display: display}) %>
+      <% }) %>
+    <% } %>
   </section>
 
-  <form action="/tags/createTags" method='POST'>
-    <input type="text" placeholder="Enter New Tags, Comma Separated" name='tags'>
-    <input type="submit">
-  </form>
+  <section class="addTags">
+    <input type="text" id='newTags' placeholder="Enter New Tags, Comma Separated" name='tags'>
+    <button id='addTags' class='formButton'>Add Tags</button>
+  </section>
 
   <a href="/todos">Back to Todo List</a>
   <a href="/logout">Logout</a>
