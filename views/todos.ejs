@@ -23,11 +23,12 @@
         <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-gb') %> </span>
         <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-gb') %> </span>
         <p class="todoDetails"><%= el.todoDetails %> </p>
-        <% if (el.tags?.length) { %>
-        <section class="tags" data-id=<%= el._id %>>
-          <% el.tags.forEach( el => { %>
-          <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
-          <% }) %>
+        <section id='tags' class="tags">
+          <% if (el.tags?.length) { %>
+            <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+              <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
+            <% }) %>
+          <% } %>
         </section>
         <section class="subTask" data-id=<%= el._id %>>
           <ul>
@@ -36,8 +37,6 @@
             <% }) %>
           </ul>
         </section>
-
-        <% } %>
         <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
         <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
       </li>
