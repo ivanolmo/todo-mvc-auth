@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <title>Todos</title>
 </head>
 
@@ -20,7 +20,6 @@
   </div>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
-
     <div class="todoList">
       <div class="userNumber">
         <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
@@ -36,20 +35,19 @@
           <% } %>
           <p class="todoDetails"><%= el.todoDetails %> </p>
           <% if (el.tags?.length) { %>
-          <section class="tags" data-id=<%= el._id %>>
-            <% el.tags.forEach( el => { %>
-            <span class='tag' data-tag='<%=el.tag%>' data-id='<%=el._id%>'><i class="fa-solid fa-tag"></i><%= el.tag %></span>
-            <% }) %>
-          </section>
-          <section class="subTask" data-id=<%= el._id %>>
-            <ul>
-              <% el.subTasks.forEach( el => { %>
-              <li><%= el %> </li>
+            <section class="tags" data-todo-id='<%= el._id %>'>
+              <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+                <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
               <% }) %>
-            </ul>
-          </section>
-
+            </section>
           <% } %>
+          <section class="subTask" data-id=<%= el._id %>>
+          <ul>
+            <% el.subTasks.forEach( el => { %>
+            <li><%= el %> </li>
+            <% }) %>
+          </ul>
+          </section>
           <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
           <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
         </li>
@@ -76,6 +74,4 @@
     <script src="/js/form.js"></script>
   </div>
 </body>
-
-
 </html>

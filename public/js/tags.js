@@ -21,40 +21,64 @@ Array.from(cancelEditBtn).forEach((el) => {
   el.addEventListener('click', cancelEdit); // Add event listeners to cancel edit buttons
 })
 
+document.querySelector('button#addTags')?.addEventListener('click', addTags)
+
+async function addTags() {
+  const tags = document.querySelector('input#newTags')
+  if (tags.value.length) {
+    try {
+      const tagResult = await fetch('/tags/createTags', {
+        method: 'post',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({
+          tags: tags.value
+        }),
+      })
+      location.reload(); // Reload page
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 async function deleteTag() {
   // Create delete tag function
-  const tagId = this.parentNode.dataset.id; // Get tag id
+  const tagId = this.parentNode.dataset.tagId; // Get tag id
   try {
     // Try
-    const response = await fetch('tags/deleteTag', {
+    await fetch('/todos/deleteTag', { // Delete tag from all todos first
+      method: 'delete',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({
+        tagId: tagId
+      })
+    })
+    await fetch('tags/deleteTag', { // Then delete tag itself
       // Fetch delete tag route
       method: 'delete', // Set method to delete
       headers: { 'Content-type': 'application/json' }, // Set headers
       body: JSON.stringify({
-        // Stringify
         tagId: tagId, // Set tag id
       }),
     });
-    const data = await response.json(); // Get response
-    console.log(data); // Log to console
     this.parentNode.parentNode.remove();
   } catch (err) {
     // Catch
-    console.log(err); // Log to console
+    console.error(err); // Log to console
   }
 }
 
 function editTag() {
   // Create edit tag function
-  const tagId = this.parentNode.dataset.id; // Get tag id
-  document.querySelector(`div.tagDisplayContainer[data-id='${tagId}']`).classList.add('hidden') // Hide the display container
-  document.querySelector(`div.tagEditContainer[data-id='${tagId}']`).classList.remove('hidden') // Display the edit container
+  const tagId = this.parentNode.dataset.tagId; // Get tag id
+  document.querySelector(`div.tagDisplayContainer[data-tag-id='${tagId}']`).classList.add('hidden') // Hide the display container
+  document.querySelector(`div.tagEditContainer[data-tag-id='${tagId}']`).classList.remove('hidden') // Display the edit container
 }
 
 async function saveEdit() {
     // Create save tag function
-    const tagId = this.parentNode.dataset.id; // Get tag id
-    const tag = document.querySelector(`input[data-id='${tagId}']`).value // Get tag value from text input
+    const tagId = this.parentNode.dataset.tagId; // Get tag id
+    const tag = document.querySelector(`input[data-tag-id='${tagId}']`).value // Get tag value from text input
     try {
       // Try
       const response = await fetch('tags/updateTag', {
@@ -68,18 +92,17 @@ async function saveEdit() {
         }),
       });
       const data = await response.json(); // Get response
-      console.log(data); // Log to console
-      document.querySelector(`div.tagDisplayContainer[data-id='${tagId}']`).classList.remove('hidden') // Hide the display container
-      document.querySelector(`div.tagEditContainer[data-id='${tagId}']`).classList.add('hidden') // Display the edit container
-      document.querySelector(`span.tagDisplay[data-id='${tagId}']`).innerText = tag
+      document.querySelector(`div.tagDisplayContainer[data-tag-id='${tagId}']`).classList.remove('hidden') // Hide the display container
+      document.querySelector(`div.tagEditContainer[data-tag-id='${tagId}']`).classList.add('hidden') // Display the edit container
+      document.querySelector(`span.tagDisplay[data-tag-id='${tagId}']`).innerText = tag
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
 }
 
 function cancelEdit() {
-  const tagId = this.parentNode.dataset.id; // Get tag id
-  document.querySelector(`div.tagDisplayContainer[data-id='${tagId}']`).classList.remove('hidden') // Hide the display container
-  document.querySelector(`div.tagEditContainer[data-id='${tagId}']`).classList.add('hidden') // Display the edit container
+  const tagId = this.parentNode.dataset.tagId; // Get tag id
+  document.querySelector(`div.tagDisplayContainer[data-tag-id='${tagId}']`).classList.remove('hidden') // Hide the display container
+  document.querySelector(`div.tagEditContainer[data-tag-id='${tagId}']`).classList.add('hidden') // Display the edit container
 }

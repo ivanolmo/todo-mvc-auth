@@ -48,7 +48,7 @@ async function addTags() {
       const tagResponseJSON = await tagResponse.json()
       const tagIds = JSON.parse(tagResponseJSON).tagIds
       const todoTags = await fetch('/todos/addTags', {
-        method: 'post',
+        method: 'put',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
           todoId: todoId,
