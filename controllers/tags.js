@@ -32,10 +32,10 @@ module.exports = {
         )
         tagIds.push(tagId._id)
       }
-      if ( !req.body.todoItem ) {
-        res.json({tagIds: tagIds})
-      } else {
+      if ( req.body.todoItem || req.body.todo ) {
         return tagIds
+      } else {
+        res.json({tagIds: tagIds})
       }
     } catch (err) {
       // Catch
