@@ -1,7 +1,15 @@
 const removeTagBtn = document.querySelectorAll('.remove-tag'); //select all the remove buttons
 const addTagsBtn = document.querySelector('button.addTags')
+const removeSubTaskBtn = document.querySelectorAll('.removeSubTaskBtn')
 
 addTagsBtn.addEventListener('click', addTags);
+
+// Loop through each delete subtask button and add eventlistener to delete the input and delete button
+removeSubTaskBtn.forEach(el => el.addEventListener('click', function clickevent(e) {
+  console.log(e.target.parentNode)
+  e.target.parentNode.remove()
+}))
+
 
 Array.from(removeTagBtn).forEach((el) => {
   // Loop through remove buttons
