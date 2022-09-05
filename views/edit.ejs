@@ -25,10 +25,14 @@ but can change them  -->
                 <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
                 <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
                 <label>Subtasks</label>
-                <div class="subTasks">
+                <div class="subTasks subTaskContainer">
                   <% todo.subTasks.forEach ( el => { %> 
-                    <input type="text" value="<%= el %>" name="subTasks">
+                    <div>
+                      <input type="text" value="<%= el %>" name="subTasks">
+                      <i class="fa-solid fa-minus removeSubTaskBtn"></i>
+                    </div>
                   <% }) %> 
+                  <i id="addSubTaskBtn" class="fa-duotone fa-plus"></i>
                 </div>
                 <label>Existing Tags</label>
                 <div class='hint'>(Click red X to remove tag from this todo item only)</div>
