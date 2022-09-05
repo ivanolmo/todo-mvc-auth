@@ -58,8 +58,13 @@
         <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
         <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
         <div class="addSubTask">
-          <input type="text" placeholder="Add subtask" name="subTasks">
-          <i id="addSubTaskBtn" class="fa-duotone fa-plus addSubTaskBtn">Add Subtask</i>
+          <div class="subTaskItem">
+            <input type="text" placeholder="Add subtask" name="subTasks">
+            <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+          </div>
+        </div>
+        <div>
+          <i id="addSubTaskBtn" class="fa-plus addSubTaskBtn">Additional Subtask</i>
         </div>
         <input type="datetime-local" id="dueDate" name="dueDate">
         <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
