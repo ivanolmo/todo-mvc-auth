@@ -60,27 +60,24 @@
         <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
         <div class="addSubTask">
           <div class="subTaskItem">
-            <div class="subTasks subTaskContainer">
             <input type="text" placeholder="Add subtask" name="subTasks">
-            </div>
-        <div class="subTaskBtns">
-          <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+            <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
           </div>
         </div>
         <div>
           <i id="addSubTaskBtn" class="fa-plus addSubTaskBtn">Additional Subtask</i>
         </div>
-      </div>
         <input type="datetime-local" id="dueDate" name="dueDate">
         <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
         <button type="submit" class="todoSubmit">Submit</button>
       </form>
     </div>
     <a id="logoutButton" class="button" href="/logout">Logout</a>
-  </div>
+
   <script src="/js/main.js"></script>
   <script src="/js/tags.js"></script>
   <script src="/js/form.js"></script>
+  </div>
 </body>
 
 </html>

@@ -34,11 +34,12 @@ but can change them  -->
         <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
         <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
         <label>Subtasks</label>
-        <div class="subTasks subTaskContainer">
+        <div class="addSubTask">
           <% todo.subTasks.forEach ( el => { %> 
-            <div>
+            <div class="subTaskItem">
               <input type="text" value="<%= el %>" name="subTasks">
-              <i class="fa-solid fa-minus removeSubTaskBtn"></i>
+              <!-- <i class="fa-solid fa-minus removeSubTaskBtn"></i> -->
+              <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
             </div>
           <% }) %> 
         </div>
