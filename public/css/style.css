@@ -306,3 +306,12 @@ div.hidden {
     gap: 4px;
     cursor: pointer;
 }
+
+.subTaskItem {
+    display: flex;
+    gap: 6px;
+}
+
+.delSubTaskBtn {
+    color: red;
+}
