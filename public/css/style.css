@@ -287,9 +287,18 @@ div.hidden {
   width: 100%;
 }
 
+.subTaskItem {
+    display: flex;
+    gap: 6px;
+}
+
 .addSubTaskBtn {
     display: flex;
     justify-content: center;
     gap: 4px;
     cursor: pointer;
+}
+
+.delSubTaskBtn {
+    color: red;
 }
