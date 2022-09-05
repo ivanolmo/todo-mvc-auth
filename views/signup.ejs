@@ -7,13 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/style.css" />
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <title>Signup</title>
 </head>
 
 <body>
-  <button class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
 
-  <a href="/"><i class="fa-solid fa-house"></i></a>
+  <div class="navButtons">
+    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    <a href="/"><i class="fa-solid fa-house"></i></a>
+    </div>
+
+    <body class="login">
 
   <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
   <div class="alert alert-danger"><%= el.msg %></div>

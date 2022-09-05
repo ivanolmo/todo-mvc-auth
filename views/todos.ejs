@@ -7,15 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://kit.fontawesome.com/c3157a1ff1.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <title>Todos</title>
 </head>
 
 <body>
-  <button class="dark-mode-btn" onclick="darkMode()">Toggle dark mode</button>
+  <div class="navButtons">
+    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    <a href="/"><i class="fa-solid fa-house"></i></a>
+    </div>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
-  </div>
+  
   <div class="todoList">
+    <div class="userNumber">
+      <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
+    </div>
     <ul>
       <% todos.forEach( el => { %>
       <li class='todoItem' data-id='<%=el._id%>'>
@@ -38,14 +47,11 @@
         </section>
 
         <% } %>
-        <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+        <a href='/todos/edit/<%=el._id %>'><span class='edit'><i class="fa-regular fa-pen-to-square"></i></span></a>
         <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
       </li>
       <% }) %>
     </ul>
-  </div>
-  <div class="userNumber">
-    <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left %> things left to do.</h2>
   </div>
   <div class="addTodo" name="addTodoItem">
     <form action="/todos/createTodo" method='POST'>
@@ -69,6 +75,8 @@
 
   <script src="js/main.js"></script>
   <script src="js/tags.js"></script>
+</div>
 </body>
+
 
 </html>
