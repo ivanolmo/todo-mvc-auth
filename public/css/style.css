@@ -293,3 +293,15 @@ div.hidden {
   flex-direction: column;
   width: 100%;
 }
+
+.subTasks div {
+    display: flex;
+}
+
+.subTasks div:first-child i {
+    display: none;
+}
+
+.subTasks div:first-child input {
+    width: 94%;
+}
