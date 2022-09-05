@@ -171,6 +171,7 @@ input[type=submit] {
     max-width: 500px;
     padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
 .addTodo form {
@@ -318,4 +319,13 @@ div.hidden {
     justify-content: center;
     gap: 4px;
     cursor: pointer;
+}
+
+.subTaskItem {
+    display: flex;
+    gap: 6px;
+}
+
+.delSubTaskBtn {
+    color: red;
 }
