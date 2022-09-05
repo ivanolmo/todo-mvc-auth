@@ -8,9 +8,10 @@ a:active {
 
 body {
     padding: 25px;
+    margin: 0;
     background-color: white;
     color: black;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 .dark-mode {
@@ -19,16 +20,12 @@ body {
 }
 
 html {
-
-    background-color: black;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #333;
-    background-image: url('images/bg.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     line-height: 1.5;
     color: rgb(255, 255, 255);
-    font-family: 'Roboto', sans-serif;
 }
 
 .button {
@@ -93,27 +90,32 @@ input[type=submit] {
 .signupForm {
     background: #1a1a1a69;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    margin: 25% auto;
+    gap: 24px;
+    width: 100%;
+    max-width: 500px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* loginPage */
+
+.navButtons {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
 .login {
-    background: #1a1a1a69;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin: 25% auto;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    flex-direction: column;
 }
 
 .fa-solid.fa-house {
@@ -121,11 +123,7 @@ input[type=submit] {
     justify-content: right;
 }
 
-.fa-solid.fa-circle-half-stroke {
-    display: flex;
-    justify-content: left;
-    font-size: large;
-}
+
 
 /* todoPage */
 .todoTitle {
@@ -144,10 +142,11 @@ input[type=submit] {
 .todo {
     background: #1a1a1a69;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 500px;
+    width: 60%;
+    /* max-width: 500px; */
     margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
@@ -159,13 +158,9 @@ input[type=submit] {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background: #1a1a1a69;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .userNumber {
-    color: #fff;
     font-size: 20px;
     font-weight: 300;
     text-align: center;
@@ -173,13 +168,8 @@ input[type=submit] {
 }
 
 .addTodo {
-    width: 100%;
     max-width: 500px;
-    margin: 0 auto;
     padding: 20px;
-    background: #1a1a1a69;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -198,6 +188,21 @@ input[type=submit] {
 .todoSubmit {
     padding: 8px 20px;
     cursor: pointer;
+}
+
+/* Edit Page */
+.editForm {
+    background: #1a1a1a69;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .logout {
@@ -291,4 +296,13 @@ div.hidden {
 .addSubTask {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.addSubTaskBtn {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
 }
