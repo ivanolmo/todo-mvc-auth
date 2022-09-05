@@ -35,18 +35,18 @@
           <% } %>
           <p class="todoDetails"><%= el.todoDetails %> </p>
           <% if (el.tags?.length) { %>
-            <section class="tags" data-todo-id='<%= el._id %>'>
-              <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
-                <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
-              <% }) %>
-            </section>
+          <section class="tags" data-todo-id='<%= el._id %>'>
+            <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+            <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
+            <% }) %>
+          </section>
           <% } %>
           <section class="subTask" data-id=<%= el._id %>>
-          <ul>
-            <% el.subTasks.forEach( el => { %>
-            <li><%= el %> </li>
-            <% }) %>
-          </ul>
+            <ul>
+              <% el.subTasks.forEach( el => { %>
+              <li><%= el %> </li>
+              <% }) %>
+            </ul>
           </section>
           <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
           <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
@@ -59,8 +59,13 @@
         <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
         <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
         <div class="addSubTask">
-          <input type="text" placeholder="Add subtask" name="subTasks">
-          <i id="addSubTaskBtn" class="fa-duotone fa-plus addSubTaskBtn">Add Subtask</i>
+          <div class="subTaskItem">
+            <input type="text" placeholder="Add subtask" name="subTasks">
+            <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+          </div>
+        </div>
+        <div>
+          <i id="addSubTaskBtn" class="fa-plus addSubTaskBtn">Additional Subtask</i>
         </div>
         <input type="datetime-local" id="dueDate" name="dueDate">
         <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
@@ -74,4 +79,5 @@
     <script src="/js/form.js"></script>
   </div>
 </body>
+
 </html>
