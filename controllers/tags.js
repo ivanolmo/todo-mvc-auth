@@ -1,21 +1,21 @@
 const Tag = require('../models/Tag'); // Import tag model
-const Todos = require('./todos.js'); // Import todos controller
 
 module.exports = {
   // Export module
   getTags: async (req, res) => {
     // Create get tags function
-    console.log(req.user); // Log to console
     try {
       // Try
       const tags = await Tag.find({ userId: req.user.id }); // Find tags
       res.render('tags.ejs', {
         tags: tags,
         user: req.user,
+        display: {  editable: true,
+                    deletable: true}
       }); // Render tags.ejs
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   createTags: async (req, res) => {
@@ -33,25 +33,25 @@ module.exports = {
         tagIds.push(tagId._id)
       }
       if ( !req.body.todoItem ) {
-        res.json(JSON.stringify({tagIds: tagIds}))
+        res.json({tagIds: tagIds})
       } else {
         return tagIds
       }
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   deleteTag: async (req, res) => {
     // Create delete tag function
     try {
       // Try
-      await Tag.findOneAndDelete({ _id: req.body.tagId }); // Find tag and delete
-      const taggedTodos =
-      res.json('Deleted Tag'); // Send response
+      //const tag = await Tag.findOne({ _id: req.body.tagId })
+      const tag = await Tag.findOneAndDelete({ _id: req.body.tagId }); // Find tag and delete
+      res.json({success: true, tagId: req.body.tagId }); // Send response
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   updateTag: async (req, res) => {
@@ -64,7 +64,7 @@ module.exports = {
       res.json('Updated tag')
     } catch (err) {
       // Catch
-      console.log(err); // Log to console
+      console.error(err); // Log to console
     }
   },
   getTag: async (req, res) => {
@@ -72,7 +72,7 @@ module.exports = {
       const tag = await Tag.findOne({ _id: req.body.tagId })
       res.json(tag.tag)
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 };
