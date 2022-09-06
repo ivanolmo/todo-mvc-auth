@@ -11,11 +11,18 @@ html {
 }
 
 body {
+  background-color: #c9ddf1;
   font-size: 18px;
+  min-width: 375px;
 }
 
 a {
   text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 .dark-mode {
@@ -161,8 +168,9 @@ input[type='submit'] {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  padding: 24px;
 }
+
 .login {
   display: flex;
   justify-content: center;
@@ -177,36 +185,19 @@ input[type='submit'] {
 }
 
 /* todoPage */
-.todoTitle {
-  background: #1a1a1a69;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}
-
 .todo {
-  background: #1a1a1a69;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
-  padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 24px;
 }
 
 .todoList {
+  margin: 20px auto;
   width: 100%;
   max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
 }
 
 .userNumber {
@@ -214,6 +205,83 @@ input[type='submit'] {
   font-weight: 300;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.todoItem {
+  display: grid;
+  grid-template-areas:
+    'todoNumber todoNumber'
+    'todoTitle  todoTitle'
+    'details    details'
+    'subTasks   subTasks'
+    'todoButtons todoDates'
+    'tags        tags';
+  row-gap: 8px;
+  margin: 10px 0;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.todoItem:nth-child(even) {
+  background: #75bcff;
+  color: #1768b3;
+}
+
+.todoItem:nth-child(odd) {
+  background-color: #7cde99;
+  color: #1c8038;
+}
+
+.todoNumber {
+  grid-area: todoNumber;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.todoTitle {
+  grid-area: todoTitle;
+  cursor: pointer;
+}
+
+.subTasksContainer {
+  grid-area: subTasks;
+}
+
+.subTasksContainer ul {
+  list-style: square;
+}
+
+.subTasksContainer ul li {
+  margin-left: 20px;
+}
+
+.detailsContainer {
+  grid-area: details;
+}
+
+.buttonContainer {
+  grid-area: todoButtons;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+
+.datesContainer {
+  grid-area: todoDates;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.fa-edit {
+  color: #000;
+}
+
+.tags {
+  grid-area: tags;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .addTodo {
@@ -276,14 +344,11 @@ input[type='submit'] {
 
 .del {
   color: red;
+  cursor: pointer;
 }
 
 .todoDetails {
   display: none;
-}
-.todo .todoList ul {
-  margin: 0;
-  padding: 0;
 }
 
 .tag {
@@ -308,12 +373,7 @@ input[type='submit'] {
   padding: 0px 5px;
 }
 
-section.tags {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-div.tag {
+.tag {
   display: inline-block;
 }
 
@@ -350,18 +410,6 @@ div.hidden {
   width: 100%;
 }
 
-.subTasks div {
-  display: flex;
-}
-
-.subTasks div:first-child i {
-  display: none;
-}
-
-.subTasks div:first-child input {
-  width: 94%;
-}
-
 .subTaskItem {
   display: flex;
   gap: 6px;
@@ -371,13 +419,20 @@ div.hidden {
   color: red;
 }
 
-.detailsBtn:hover {
-  font-size: 20px;
-  cursor: pointer;
-}
 .detailsBtn {
   text-transform: uppercase;
-  /* border: 1px solid black; */
   background-color: lightskyblue;
   border-radius: 5px;
+}
+
+.detailsBtn:hover {
+  cursor: pointer;
+  --transform-scale-x: 1.1;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }
