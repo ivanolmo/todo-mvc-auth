@@ -1,6 +1,6 @@
 const deleteBtn = document.querySelectorAll('.del'); //select all the delete buttons
 const todoItem = document.querySelectorAll('span.not'); // Select all the todo items
-const toggleDetailsBox = document.querySelectorAll('input.toggleDetails'); // Select all the toggle details checkboxes
+const toggleDetailsBox = document.querySelectorAll('span.detailsBtn'); // Select all the toggle details checkboxes
 const todoComplete = document.querySelectorAll('span.completed'); // Select all the completed todo items
 const addSubTaskBtn = document.getElementById('addSubTaskBtn'); // button for adding additional subtasks
 const userPrefs = JSON.parse(localStorage.getItem('userPrefs')) || {}; // get user preferences from local storage
