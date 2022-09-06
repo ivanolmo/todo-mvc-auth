@@ -43,7 +43,7 @@ Array.from(toggleDetailsBox).forEach((el) => {
 
 async function deleteTodo() {
   // Create delete todo function
-  const todoId = this.parentNode.dataset.id; // Get todo id
+  const todoId = this.parentNode.parentNode.parentNode.dataset.id; // Get todo id
   try {
     // Try
     const response = await fetch('todos/deleteTodo', {
