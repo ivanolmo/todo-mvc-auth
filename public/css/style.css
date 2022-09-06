@@ -244,6 +244,16 @@ input[type=submit] {
 .todoDetails {
     display: none;
 }
+.todo .todoList ul{
+    margin: 0;
+    padding: 0;
+}
+
+ .todoList ul li{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+} 
 
 .tag {
   border: 1px solid black;

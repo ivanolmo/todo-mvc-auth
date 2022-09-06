@@ -111,7 +111,7 @@ async function markIncomplete() {
 }
 
 function toggleDetails() {
-  const todoId = this.parentNode.dataset.id; // Get todo id
+  const todoId = this.parentNode.parentNode.dataset.id; // Get todo id
   const todo = document.querySelector(`[data-id="${todoId}"]`); // Get parent li node with the specified id
   const todoDetails = todo.querySelector('.todoDetails'); // Get todo details inside the parent li node
   if (todoDetails.style.display === 'block') {
