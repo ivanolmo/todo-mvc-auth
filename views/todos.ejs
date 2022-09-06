@@ -31,32 +31,32 @@
           <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
           <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
           <div>
-          <% if (el.todoDetails) { %>
-          <span class="detailsBtn">Details
-					<i class="fas fa-arrow-down toggleDetails" name="toggleDetails"  data="<%= el._id  %>"></i>
-					</span>
-          <% } %>
-          <p class="todoDetails"><%= el.todoDetails %> </p>
-          
-          <% if (el.tags?.length) { %>
-          <section class="tags" data-todo-id='<%= el._id %>'>
-            <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
-            <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
-            <% }) %>
-          </section>
-          <% } %>
-          <section class="subTask" data-id=<%= el._id %>>
-            <ul>
-              <% el.subTasks.forEach( el => { %>
-              <li><%= el %> </li>
+            <% if (el.todoDetails) { %>
+            <span class="detailsBtn">Details
+              <i class="fas fa-arrow-down toggleDetails" name="toggleDetails" data="<%= el._id  %>"></i>
+            </span>
+            <% } %>
+            <p class="todoDetails"><%= el.todoDetails %> </p>
+
+            <% if (el.tags?.length) { %>
+            <section class="tags" data-todo-id='<%= el._id %>'>
+              <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+              <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
               <% }) %>
-            </ul>
-          </section>
-          <section class="buttonContainer">
-            
-            <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
-            <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
-          </section>
+            </section>
+            <% } %>
+            <section class="subTask" data-id=<%= el._id %>>
+              <ul>
+                <% el.subTasks.forEach( el => { %>
+                <li><%= el %> </li>
+                <% }) %>
+              </ul>
+            </section>
+            <section class="buttonContainer">
+
+              <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+              <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
+            </section>
         </li>
         <% }) %>
       </ul>
@@ -79,20 +79,13 @@
         <button type="submit" class="todoSubmit">Submit</button>
       </form>
     </div>
-    <a id="logoutButton" class="button" href="/logout">Logout</a>
+  </div>
+  <a id="logoutButton" class="bn29" href="/logout">Logout</a>
+  </div>
 
   <script src="/js/main.js"></script>
   <script src="/js/tags.js"></script>
   <script src="/js/form.js"></script>
-  </div>
-
-  <a id="logoutButton" class="bn29" href="/logout">Logout</a>
-
-  <script src="js/main.js"></script>
-  <script src="js/tags.js"></script>
-</div>
-
-
 </body>
 
 </html>
