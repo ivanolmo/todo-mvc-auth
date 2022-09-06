@@ -22,7 +22,7 @@
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
     <div class="todoList">
       <div class="userNumber">
-        <h2><%= user.userName[0].toUpperCase() + user.userName.slice(1) %> has <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
+        <h2>You have <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
       </div>
       <ul>
         <% todos.forEach( el => { %>
