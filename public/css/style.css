@@ -306,6 +306,19 @@ div.hidden {
     justify-content: center;
     gap: 4px;
     cursor: pointer;
+  width: 100%;
+}
+
+.subTasks div {
+    display: flex;
+}
+
+.subTasks div:first-child i {
+    display: none;
+}
+
+.subTasks div:first-child input {
+    width: 94%;
 }
 
 .subTaskItem {

@@ -153,7 +153,8 @@ module.exports = {
           todo: req.body.todo,
           todoDetails: req.body.todoDetails,
           dueDate: req.body.dueDate,
-          tags: tags
+          tags: tags,
+          subTasks: req.body.subTasks
         },
         {
           returnOriginal: false,

@@ -33,6 +33,17 @@ but can change them  -->
         <label>Description (optional):</label>
         <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
         <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
+        <label>Subtasks</label>
+        <div class="addSubTask">
+          <% todo.subTasks.forEach ( el => { %> 
+            <div class="subTaskItem">
+              <input type="text" value="<%= el %>" name="subTasks">
+              <!-- <i class="fa-solid fa-minus removeSubTaskBtn"></i> -->
+              <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+            </div>
+          <% }) %> 
+        </div>
+        <i id="addSubTaskBtn" class="fa-duotone fa-plus addSubTaskBtn">Add Subtask</i>
         <label>Existing Tags</label>
         <div class='hint'>(Click red X to remove tag from this todo item only)</div>
         <% if (todo.tags?.length) { %>
