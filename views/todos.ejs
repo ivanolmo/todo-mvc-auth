@@ -15,8 +15,8 @@
 
 <body>
   <div class="navButtons">
-    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
     <a href="/"><i class="fa-solid fa-house"></i></a>
+    <a class="dark-mode-btn" onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></a>
   </div>
   <div class="todo">
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
@@ -25,38 +25,56 @@
         <h2>You have <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
       </div>
       <ul>
-        <% todos.forEach( el => { %>
+        <% todos.forEach( (el, index) => { %>
         <li class='todoItem' data-id='<%=el._id%>'>
-          <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-          <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
-          <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
-          <div>
+
+          <span class="todoNumber"># <%= index + 1 %></span>
+
+          <h3 class='todoTitle <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></h3>
+
+          <section class="detailsContainer">
             <% if (el.todoDetails) { %>
-            <span class="detailsBtn">Details
+            <span class="detailsBtn">Details...
               <i class="fas fa-arrow-down toggleDetails" name="toggleDetails" data="<%= el._id  %>"></i>
             </span>
             <% } %>
             <p class="todoDetails"><%= el.todoDetails %> </p>
+          </section>
 
-            <% if (el.tags?.length) { %>
-            <section class="tags" data-todo-id='<%= el._id %>'>
-              <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
-              <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
+          <section class="subTasksContainer" data-id=<%= el._id %>>
+            <ul>
+              <h3>Subtasks</h3>
+              <% if (!el.subTasks) { %>
+              <span>N/A</span>
+              <% } %>
+              <% el.subTasks?.forEach( el => { %>
+              <li><%= el %></li>
               <% }) %>
-            </section>
-            <% } %>
-            <section class="subTask" data-id=<%= el._id %>>
-              <ul>
-                <% el.subTasks.forEach( el => { %>
-                <li><%= el %> </li>
-                <% }) %>
-              </ul>
-            </section>
-            <section class="buttonContainer">
+            </ul>
+          </section>
 
-              <a href='/todos/edit/<%=el._id %>'><span class='edit'>Edit</span></a>
+          <section class="buttonContainer">
+            <div>
+              <a href='/todos/edit/<%=el._id %>'><i class="fa-regular fa-edit"></i></a>
+            </div>
+            <div>
               <span class='del'> <i class="fa-regular fa-trash-can"></i> </span>
-            </section>
+            </div>
+          </section>
+
+          <section class="datesContainer">
+            <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
+
+            <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
+          </section>
+
+          <% if (el.tags?.length) { %>
+          <section class="tags" data-todo-id='<%= el._id %>'>
+            <% el.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (el) => { %>
+            <%- include('partials/tag.ejs', {tag: el, display: { editable: false, deletable: false}}) %>
+            <% }) %>
+          </section>
+          <% } %>
         </li>
         <% }) %>
       </ul>
@@ -67,7 +85,7 @@
         <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
         <div class="addSubTask">
           <div class="subTaskItem">
-            <input type="text" placeholder="Add subtask" name="subTasks">
+            <input type="text" placeholder="Add subtask" name="subTaskssss">
             <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
           </div>
         </div>
@@ -80,8 +98,10 @@
       </form>
     </div>
   </div>
-  <a id="logoutButton" class="bn29" href="/logout">Logout</a>
-  </div>
+  <footer>
+    <a id="logoutButton" class="bn29" href="/logout">Logout</a>
+  </footer>
+
 
   <script src="/js/main.js"></script>
   <script src="/js/tags.js"></script>
