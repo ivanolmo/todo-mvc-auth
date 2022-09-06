@@ -291,6 +291,12 @@ input[type='submit'] {
   width: 100%;
 }
 
+.addTodo input,
+.addTodo textArea,
+.addTodo label {
+  margin: 0.6rem 0;
+}
+
 .addTodo form {
   display: flex;
   flex-direction: column;
@@ -423,6 +429,10 @@ div.hidden {
   text-transform: uppercase;
   background-color: lightskyblue;
   border-radius: 5px;
+}
+
+.submitButton {
+  margin-top: 1rem;
 }
 
 .detailsBtn:hover {
