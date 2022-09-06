@@ -33,20 +33,30 @@ but can change them  -->
         <label>Description (optional):</label>
         <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
         <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
+        <label>Subtasks</label>
+        <div class="addSubTask">
+          <% todo.subTasks.forEach ( el => { %> 
+            <div class="subTaskItem">
+              <input type="text" value="<%= el %>" name="subTasks">
+              <!-- <i class="fa-solid fa-minus removeSubTaskBtn"></i> -->
+              <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+            </div>
+          <% }) %> 
+        </div>
+        <i id="addSubTaskBtn" class="fa-duotone fa-plus addSubTaskBtn">Add Subtask</i>
         <label>Existing Tags</label>
         <div class='hint'>(Click red X to remove tag from this todo item only)</div>
-        <section class="tags">
-          <% todo.tags.forEach( el => { %>
-          <div class='tag' data-id='<%=el._id%>'>
-            <i class="fa-solid fa-tag"></i><span class='tagDisplay' data-id='<%=el._id%>'><%= el.tag %></span><i class="fa-solid fa-xmark remove-tag" data-id='<%=el._id%>'></i>
-          </div>
-          <% }) %>
-        </section>
-        <section class='addTags'>
+        <% if (todo.tags?.length) { %>
+          <section class="tags" data-todo-id='<%= todo._id %>'>
+            <% todo.tags.sort((a,b) => a.tag.localeCompare(b.tag)).forEach( (tag) => { %>
+              <%- include('partials/tag.ejs', {tag: tag, display: { editable: false, deletable: true}}) %>
+            <% }) %>
+          </section>
+        <% } %>
+      <section class='addTags'>
           <label>Add New Tags</label>
           <div class='inputBox'>
             <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
-            <button type="button" class="addTags">Add Tags</button>
           </div>
         </section>
         <input type="submit">

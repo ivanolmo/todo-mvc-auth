@@ -1,16 +1,21 @@
-const removeTagBtn = document.querySelectorAll('.remove-tag'); //select all the remove buttons
-const addTagsBtn = document.querySelector('button.addTags')
+const deleteTagBtn = document.querySelectorAll('.delete-tag'); //select all the remove buttons
+const removeSubTaskBtn = document.querySelectorAll('.removeSubTaskBtn')
 
-addTagsBtn.addEventListener('click', addTags);
+// Loop through each delete subtask button and add eventlistener to delete the input and delete button
+removeSubTaskBtn.forEach(el => el.addEventListener('click', function clickevent(e) {
+  console.log(e.target.parentNode)
+  e.target.parentNode.remove()
+}))
 
-Array.from(removeTagBtn).forEach((el) => {
+
+Array.from(deleteTagBtn).forEach((el) => {
   // Loop through remove buttons
   el.addEventListener('click', removeTag); // Add event listener to remove buttons
 });
 
 async function removeTag() {
   // Create remove tag function
-  const tagId = this.parentNode.dataset.id; // Get tag id
+  const tagId = this.parentNode.dataset.tagId; // Get tag id
   const todoId = document.querySelector(`form[data-todo-id]`).dataset.todoId
   try {
     // Try
@@ -25,7 +30,7 @@ async function removeTag() {
       }),
     });
     const data = await response.json(); // Get response
-    if (data) document.querySelector(`div.tag[data-id='${tagId}']`).remove()
+    if (data) document.querySelector(`div.tag[data-tag-id='${tagId}']`).remove()
   } catch (err) {
     // Catch
     console.error(err); // Log to console
@@ -48,7 +53,7 @@ async function addTags() {
       const tagResponseJSON = await tagResponse.json()
       const tagIds = JSON.parse(tagResponseJSON).tagIds
       const todoTags = await fetch('/todos/addTags', {
-        method: 'post',
+        method: 'put',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
           todoId: todoId,

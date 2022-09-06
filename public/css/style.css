@@ -228,6 +228,7 @@ input[type=submit] {
     max-width: 500px;
     padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
 .addTodo form {
@@ -239,7 +240,7 @@ input[type=submit] {
 
 .addTodo input,
 .addTodo textarea {
-
+    width: 100%;
 }
 
 .todoSubmit {
@@ -300,6 +301,16 @@ input[type=submit] {
 .todoDetails {
     display: none;
 }
+.todo .todoList ul{
+    margin: 0;
+    padding: 0;
+}
+
+ .todoList ul li{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+} 
 
 .tag {
   border: 1px solid black;
@@ -353,4 +364,46 @@ div.hidden {
 .addSubTask {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.addSubTaskBtn {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+  width: 100%;
+}
+
+.subTasks div {
+    display: flex;
+}
+
+.subTasks div:first-child i {
+    display: none;
+}
+
+.subTasks div:first-child input {
+    width: 94%;
+}
+
+.subTaskItem {
+    display: flex;
+    gap: 6px;
+}
+
+.delSubTaskBtn {
+    color: red;
+}
+
+.detailsBtn:hover {
+	font-size: 20px;
+	cursor: pointer;
+}
+.detailsBtn {
+	text-transform: uppercase;
+	/* border: 1px solid black; */
+	background-color: lightskyblue;
+	border-radius: 5px;
 }

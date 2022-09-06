@@ -1,0 +1,17 @@
+<div class='tag' data-tag-id='<%=tag._id%>'>
+  <div class='tagDisplayContainer' data-tag-id='<%=tag._id%>'>
+    <i class="fa-solid fa-tag"></i>
+    <span class='tagDisplay' data-tag-id='<%=tag._id%>'><%= tag.tag %></span>
+    <% if (display.editable) { %>
+      <i class="fa-solid fa-pencil edit-tag" data-tag-id='<%=tag._id%>'></i>
+    <% } %>
+    <% if (display.deletable) { %>
+      <i class="fa-solid fa-xmark delete-tag" data-tag-id='<%=tag._id%>'></i>
+    <% } %>
+  </div>
+  <% if (display.editable) { %>
+    <div class='tagEditContainer hidden' data-tag-id='<%= tag._id %>'>
+      <input type='text' value='<%= tag.tag %>' name='tag' class='edit-tag' data-tag-id='<%= tag._id %>'><i class='fa-solid fa-check save-edit'></i><i class='fa-solid fa-x cancel-edit'></i>
+    </div>
+  <% } %>
+</div>
