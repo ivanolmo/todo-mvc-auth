@@ -1,31 +1,26 @@
-/* link text cleaning */
-a:link,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-}
-
-body {
-  padding: 25px;
+* {
   margin: 0;
-  background-color: white;
-  color: black;
-  font-size: 18px;
-}
-
-.dark-mode {
-  background-color: black;
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-family: 'Roboto', sans-serif;
   color: #333;
-  background-size: 100%;
-  background-repeat: no-repeat;
   line-height: 1.5;
-  color: rgb(255, 255, 255);
+}
+
+body {
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
 }
 
 .button {
@@ -105,6 +100,7 @@ html {
   width: 115%;
   height: 115%;
 }
+
 /* landingPage */
 .title {
   background: #1a1a1a69;
@@ -200,8 +196,6 @@ input[type='submit'] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  /* max-width: 500px; */
   margin: 20px auto;
   padding: 20px;
   border-radius: 5px;
@@ -280,18 +274,6 @@ input[type='submit'] {
   text-decoration: underline;
 }
 
-/* #logoutButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 50px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-} */
-
 .del {
   color: red;
 }
@@ -302,12 +284,6 @@ input[type='submit'] {
 .todo .todoList ul {
   margin: 0;
   padding: 0;
-}
-
-.todoList ul li {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .tag {
