@@ -339,3 +339,14 @@ div.hidden {
 .delSubTaskBtn {
     color: red;
 }
+
+.detailsBtn:hover {
+	font-size: 20px;
+	cursor: pointer;
+}
+.detailsBtn {
+	text-transform: uppercase;
+	/* border: 1px solid black; */
+	background-color: lightskyblue;
+	border-radius: 5px;
+}

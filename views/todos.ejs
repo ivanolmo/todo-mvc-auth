@@ -32,12 +32,10 @@
           <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
           <div>
           <% if (el.todoDetails) { %>
-           
-            <label for="toggleDetails">Details: </label>
-            <input type="checkbox" name="toggleDetails" class="toggleDetails" id=<%= el._id  %>>
-            
-            <% } %>
-          </div>
+          <span class="detailsBtn">Details
+					<i class="fas fa-arrow-down toggleDetails" name="toggleDetails"  data="<%= el._id  %>"></i>
+					</span>
+          <% } %>
           <p class="todoDetails"><%= el.todoDetails %> </p>
           
           <% if (el.tags?.length) { %>
