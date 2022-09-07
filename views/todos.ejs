@@ -31,7 +31,7 @@
       </div>
 
       <div class="addTodo" name="addTodoItem">
-        <form action="/todos/createTodo" method='POST' name="todoForm" onsubmit='return validateForm()'>
+        <form id='todoForm' action="/todos/createTodo" method='POST' name="todoForm" onsubmit='return validateForm()'>
           <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
           <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
           <div class="addSubTask">

@@ -124,18 +124,20 @@ function toggleDetails() {
 }
 
 function toggleTodoForm() {
-  const todoForm = document.querySelector('.addTodo'); // select todo form
+  const todoFormDiv = document.querySelector('.addTodo'); // select todo form container
+  const todoForm = document.getElementById('todoForm'); // select todo form
   const openTodoFormBtn = document.querySelector('.formToggle .add'); // select open todo form button
   const closeTodoFormBtn = document.querySelector('.formToggle .cancel'); // select close todo form button
 
-  if (todoForm.style.display === 'block') {
+  if (todoFormDiv.style.display === 'block') {
     // if todo form is displayed
-    todoForm.style.display = 'none'; // hide todo form
+    todoFormDiv.style.display = 'none'; // hide todo form
     openTodoFormBtn.style.display = 'block'; // show open todo form button
     closeTodoFormBtn.style.display = 'none'; // hide close todo form button
+    todoForm.reset(); // reset todo form on cancel
   } else {
     // else
-    todoForm.style.display = 'block'; // show todo form
+    todoFormDiv.style.display = 'block'; // show todo form
     openTodoFormBtn.style.display = 'none'; // show open todo form button
     closeTodoFormBtn.style.display = 'block'; // hide close todo form button
   }
