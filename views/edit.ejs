@@ -32,10 +32,10 @@ but can change them  -->
           <input type="text" name="todo" placeholder="todo" value="<%= todo.todo %>">
           <label>Description (optional):</label>
           <textarea name="todoDetails" placeholder="description" value="<%= todo.todoDetails ? todo.todoDetails : '' %>"><%= todo.todoDetails ? todo.todoDetails : '' %></textarea>
-          <input type="datetime-local" name="dueDate" value="<%= todo.dueDate ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
+          <input type="datetime-local" name="dueDate" value="<%= todo.dueDate.toLocaleString('en-us') ? todo.dueDate.toISOString().slice(0,-1) : '' %>">
           <label>Subtasks</label>
           <div class="addSubTask">
-            <% todo.subTasks?.forEach ( el => { %>
+            <% todo.subTasks.forEach ( el => { %>
             <div class="subTaskItem">
               <input type="text" value="<%= el %>" name="subTasks">
               <!-- <i class="fa-solid fa-minus removeSubTaskBtn"></i> -->

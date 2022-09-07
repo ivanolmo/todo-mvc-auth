@@ -106,9 +106,9 @@
           </section>
 
           <section class="datesContainer">
-            <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
+            <span class="createdDate">Created: <%= el.createdAt.toLocaleString('en-us') %> </span>
 
-            <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
+            <span class="dueDate">Due: <%= el.dueDate.toLocaleString('en-us') %> </span>
           </section>
 
           <% if (el.tags?.length) { %>
