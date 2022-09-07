@@ -22,13 +22,56 @@
     <h1><%= user.userName[0].toUpperCase() + user.userName.slice(1) %>'s Todos</h1>
     <div class="todoList">
       <div class="userNumber">
-        <h2>You have <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things`  %> left to do.</h2>
+        <h2>You have <%= left === 0 ? 'nothing' : left === 1 ? '1 thing' : `${left} things` %> left to do.</h2>
       </div>
+
+      <div class="formToggle">
+        <button class="bn29 add" onclick="toggleTodoForm()">New Todo</button>
+        <button class="bn29 cancel" onclick="toggleTodoForm()">Cancel</button>
+      </div>
+
+      <div class="addTodo" name="addTodoItem">
+        <form action="/todos/createTodo" method='POST' name="todoForm" onsubmit='return validateForm()'>
+          <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
+          <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
+          <div class="addSubTask">
+            <div class="subTaskItem">
+              <input type="text" placeholder="Add subtask" name="subTasks">
+              <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
+            </div>
+          </div>
+          <div>
+            <i id="addSubTaskBtn" class="fa-plus addSubTaskBtn">Additional Subtask</i>
+          </div>
+          <input type="datetime-local" id="dueDate" name="dueDate">
+          <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
+          <button type="submit" class="todoSubmit">Submit</button>
+        </form>
+      </div>
+
       <ul>
         <% todos.forEach( (el, index) => { %>
-        <li class='todoItem' data-id='<%=el._id%>'>
 
-          <span class="todoNumber"># <%= index + 1 %></span>
+        <% function getTileColor(dueDate) {
+          const today = new Date();
+          const due = new Date(dueDate);
+          const diffTime = due - today;
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          if (diffDays <= 0) {
+            return 'overdue';
+          } else if (diffDays <= 3 && diffDays > 0) {
+            return 'soon';
+          } else {
+            return 'later';
+          }
+        } %>
+
+        <li class='todoItem <%= getTileColor(el.dueDate) %> <%= el.completed === true ? 'completed' : null %>' data-id='<%=el._id%>'>
+
+          <div>
+            <span class="todoNumber"># <%= index + 1 %></span>
+          </div>
 
           <h3 class='todoTitle <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></h3>
 
@@ -44,7 +87,7 @@
           <section class="subTasksContainer" data-id=<%= el._id %>>
             <ul>
               <h3>Subtasks</h3>
-              <% if (!el.subTasks) { %>
+              <% if (!el.subTasks?.length) { %>
               <span>N/A</span>
               <% } %>
               <% el.subTasks?.forEach( el => { %>
@@ -79,29 +122,10 @@
         <% }) %>
       </ul>
     </div>
-    <div class="addTodo" name="addTodoItem">
-      <form action="/todos/createTodo" method='POST' name="todoForm" onsubmit='return validateForm()'>
-        <input type="text" id='todoItem' placeholder='Enter Todo Item' name='todoItem'>
-        <textarea name="todoDetails" id="todoDetails" cols="30" rows="10" placeholder="Enter todo details (optional)"></textarea>
-        <div class="addSubTask">
-          <div class="subTaskItem">
-            <input type="text" placeholder="Add subtask" name="subTaskssss">
-            <i class="fa-solid fa-minus delSubTaskBtn" onclick="delSubTask(this)"></i>
-          </div>
-        </div>
-        <div>
-          <i id="addSubTaskBtn" class="fa-plus addSubTaskBtn">Additional Subtask</i>
-        </div>
-        <input type="datetime-local" id="dueDate" name="dueDate">
-        <input type="text" placeholder="Enter Tags, Comma Separated" name='tags'>
-        <button type="submit" class="todoSubmit">Submit</button>
-      </form>
-    </div>
   </div>
   <footer>
-    <a id="logoutButton" class="bn29" href="/logout">Logout</a>
+    <a id="logoutButton" class="bn29 logoutBtn" href="/logout">Logout</a>
   </footer>
-
 
   <script src="/js/main.js"></script>
   <script src="/js/tags.js"></script>
