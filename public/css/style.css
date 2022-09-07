@@ -251,7 +251,7 @@ input[type='submit'] {
   color: #b31c1c;
 }
 
-.todoItem.completed {
+.todoItem.completedTodo {
   background-color: #a9a9a9;
   color: #838383;
   text-decoration: line-through;
@@ -265,6 +265,7 @@ input[type='submit'] {
 
 .todoTitle {
   grid-area: todoTitle;
+  width: fit-content;
   cursor: pointer;
 }
 
