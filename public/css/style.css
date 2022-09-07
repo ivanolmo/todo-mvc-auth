@@ -339,11 +339,6 @@ input[type='submit'] {
   gap: 12px;
 }
 
-.todoSubmit {
-  padding: 8px 20px;
-  cursor: pointer;
-}
-
 /* Edit Page */
 .editForm {
   background: #1a1a1a69;
