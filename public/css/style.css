@@ -398,6 +398,7 @@ div.hidden {
 
 .delSubTaskBtn {
   color: red;
+  align-self: center;
 }
 
 .detailsBtn:hover {
