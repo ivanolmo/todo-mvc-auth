@@ -67,7 +67,7 @@
           }
         } %>
 
-        <li class='todoItem <%= getTileColor(el.dueDate) %> <%= el.completed === true ? 'completed' : null %>' data-id='<%=el._id%>'>
+        <li class='todoItem <%= getTileColor(el.dueDate) %> <%= el.completed === true ? 'completedTodo' : null %>' data-id='<%=el._id%>'>
 
           <div>
             <span class="todoNumber"># <%= index + 1 %></span>
