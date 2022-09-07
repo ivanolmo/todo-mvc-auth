@@ -123,6 +123,24 @@ function toggleDetails() {
   }
 }
 
+function toggleTodoForm() {
+  const todoForm = document.querySelector('.addTodo'); // select todo form
+  const openTodoFormBtn = document.querySelector('.formToggle .add'); // select open todo form button
+  const closeTodoFormBtn = document.querySelector('.formToggle .cancel'); // select close todo form button
+
+  if (todoForm.style.display === 'block') {
+    // if todo form is displayed
+    todoForm.style.display = 'none'; // hide todo form
+    openTodoFormBtn.style.display = 'block'; // show open todo form button
+    closeTodoFormBtn.style.display = 'none'; // hide close todo form button
+  } else {
+    // else
+    todoForm.style.display = 'block'; // show todo form
+    openTodoFormBtn.style.display = 'none'; // show open todo form button
+    closeTodoFormBtn.style.display = 'block'; // hide close todo form button
+  }
+}
+
 function addSubTasks() {
   const subTasksDiv = document.querySelector('.addSubTask'); // select div that contains subtasks
   const subTaskItem = document.querySelector('.subTaskItem').cloneNode(true); // clone first subtask item
