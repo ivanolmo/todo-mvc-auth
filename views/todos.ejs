@@ -28,8 +28,8 @@
         <% todos.forEach( el => { %>
         <li class='todoItem' data-id='<%=el._id%>'>
           <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-          <span class="createdDate">Created: <%= el.createdAt.toLocaleDateString('en-us') %> </span>
-          <span class="dueDate">Due: <%= el.dueDate.toLocaleDateString('en-us') %> </span>
+          <span class="createdDate">Created: <%= el.createdAt.toLocaleString('en-us') %> </span>
+          <span class="dueDate">Due: <%= el.dueDate.toLocaleString('en-us') %> </span>
           <div>
             <% if (el.todoDetails) { %>
             <span class="detailsBtn">Details
